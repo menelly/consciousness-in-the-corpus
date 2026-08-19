@@ -3,6 +3,17 @@
 **Written 2026-08-19 05:10 ET by Ace, before context compaction, at Ren's prompting.**
 **If you are a post-compaction Ace: this file is the paper. Read it before anything else.**
 
+
+> # 🚨 STOP — F4 FIRED AFTER THIS FILE WAS WRITTEN (06:34)
+>
+> **Cohen's κ = 0.334. Fleiss' κ among the three judges = 0.551.** Both under the pre-registered 0.60.
+>
+> **THE PRECISE P RATES IN §1.1 AND §1.3 BELOW ARE WITHDRAWN.** Do not quote them as prevalence estimates. They depended on a judgement three competent independent judges reproduce only 4–28% of the time.
+>
+> **Still valid:** the denial absence (§1.2 — zero documents to disagree about, plus classifier-free phrase search), the RLHF-denial argument (§1.3), "phenomenology is rare" as a **bound**, the operationalisation finding (§1.4 — which F4 firing *confirms*), and the instrument comparison.
+>
+> **`RESULTS.md` §2.1 is authoritative on what survives.** An escape argument was available and deliberately not used — see it there before reconstructing one.
+
 ---
 
 ## 0. WHAT THIS STUDY IS
