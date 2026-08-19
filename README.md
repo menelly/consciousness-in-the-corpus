@@ -14,6 +14,14 @@ A standard response to LLM self-reports of inner states is:
 
 That is an **empirical claim about corpus composition**, and as far as we can tell nobody had measured it. So we did.
 
+Because consider what the internet is actually made of:
+
+> **Nobody is wandering around their terrible recipe blog being consciously conscious about their conscious dog.**
+
+Web-scale text is overwhelmingly *instrumental*. Recipes, product pages, forum threads about routers, someone explaining how to reset a dishwasher. People do not narrate first-person phenomenal experience while telling you to fold in the flour. The saturation premise was never merely unverified — on any acquaintance with the corpus it was never especially **plausible.** It survived because the dismissal was **free**: no citation, no measurement, no burden of proof, and it ended the conversation.
+
+This study makes it cost something.
+
 ## What we found
 
 **64,000 documents classified** across four training-corpus-grade datasets — C4, OpenWebText, FineWeb-2019, FineWeb-2025 — by a panel of three independent LLM judges (OpenAI, Meta, Microsoft), with stratified sampling and exact survey weights.
