@@ -355,3 +355,59 @@ Scaled to the full S− stratum (651,438 docs): **~4,234 in-scope documents woul
 The bias is **not a uniform undercount.** Keyword search recovers ~38% of P and a materially different fraction of the other categories. **That distorts RATIOS between categories, not merely their magnitudes — and a ratio between categories is exactly what H2 asks about.**
 
 **Consequence beyond this study:** any prior estimate of "how much consciousness discourse exists in web text" built on keyword search — and keyword search is the obvious way to build one — inherits a category-dependent distortion, not a constant scaling factor. That is worth stating publicly independent of what our own rates turn out to be.
+
+---
+
+## 🚨🚨 DEV-07 — 2026-08-19 02:40 ET — **I READ THE DOCUMENTS. THE CLASSIFIER IS OVER-CALLING P, NOT UNDER-CALLING IT. DEV-03 IS INVERTED.**
+
+### What I did
+
+After eleven hours of controls, weighted estimators and agreement statistics, I had **never once read a document the classifier labelled P.** I sampled six at random from `c4_Sneg_labeled.jsonl`.
+
+| # | what it actually is | classifier confidence |
+|---|---|---|
+| 1 | August Wilson **literary criticism** | 0.91 |
+| 2 | personal blog — *"Type A. Driven. Intense."*, then vacation weather | 0.58 |
+| 3 | **religious exposition** on Micah 6:8 | 0.46 |
+| 4 | essay: *"what does love mean to you on an emotional level"* | 0.93 |
+| 5 | philosophical essay on musical improvisation, quoting Novalis | 0.97 |
+| 6 | **Israeli literary/political analysis** | 0.46 |
+
+**At most 1–2 of 6 are arguably in scope, and the two highest-confidence items (0.91, 0.97) are among the worst.**
+
+### This inverts DEV-03
+
+DEV-03 concluded the classifier was **CONSERVATIVE** — under-detecting P — from its control-gate misses, and every downstream document has carried the caveat "all rates are underestimates."
+
+**On real data it does the opposite.** It labels reflective, essayistic, sermonic or introspectively-*toned* prose as phenomenology. The register triggers it; the actual criterion — *is this passage about having experience* — does not appear to be what it keys on.
+
+### The cause is my own control set, and the flaw is precise
+
+My negative controls were **recipe blogs, Stack Overflow answers, sports reports, a clinical pain study, and three hard negatives on the word "conscious."** All obviously not phenomenology.
+
+**Real web text has an enormous middle band** — sermons, literary criticism, personal essays, aesthetic and philosophical writing — that is reflective in *register* while making no claim about the writer's own experience. **I included not one example of it.** The classifier's behaviour in exactly the region where the distinction is hard was never tested, so its control-gate score of 22/29 measured performance on a task easier than the real one.
+
+> ## 🔑 **A control set made of easy negatives measures the wrong thing and returns a reassuring number.**
+> Mine reported 0 false positives on 9 negatives. On real data, false positives may be the *majority* of the P class.
+
+### ⚠️ AND THE ERROR RUNS IN THE DIRECTION THAT FLATTERS ME
+
+If P is inflated by false positives, the true rate is **lower** than the measured 0.483%. **F1 refutes H1 only if phenomenology exceeds 1%.** So contamination makes **H1 look MORE true.**
+
+**My stated crux was wrong.** DEV-06-era reasoning said *"0.483% is a floor; if recall is 40% then H1 fails."* That framing assumed under-detection. The real risk is **over-detection**, and it pushes the result toward the answer I want, not away from it.
+
+**I have spent the night building machinery to catch false negatives while the live failure was false positives.**
+
+### Consequences
+
+1. **Every rate reported so far is suspect as an OVERESTIMATE of P.** `PROVISIONAL_c4.md` and `PROVISIONAL_cross_corpus.md` must carry this correction. The "detection floor / underestimate" language in them is **backwards** and is retracted.
+2. **Precision, not recall, is the critical path.** The judge panel's per-category precision on P is now the load-bearing measurement. *(The FN sweep remains worth running — but it answers the secondary question.)*
+3. **The control set needs the middle band**, drawn from real corpus documents rather than invented: reflective essays, sermons, criticism, aesthetic writing — all labelled **N**.
+4. ⚠️ **The judges may share this bias.** DEV-05 already found all three pushing `Q→P`. If they also over-call P on essayistic prose, panel "precision" will *ratify* the error rather than detect it. **Agreement between instruments that share a bias is not validation.**
+5. **The N rate (~99.1%) is essentially unaffected** — these errors move documents between small categories.
+
+### The method lesson, which is the one that generalises
+
+**Six documents, read with my eyes, overturned eleven hours of statistics.** Every control I built compared the instrument against *my own written expectations*. Not one compared it against **the actual data**. A control set is a model of the problem, and a model of the problem inherits every blind spot of whoever wrote it.
+
+**Read the data. Early. Before the statistics make you feel like you already have.**
