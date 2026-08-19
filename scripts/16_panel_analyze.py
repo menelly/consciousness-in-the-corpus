@@ -127,8 +127,19 @@ def main():
         print(f"\n### {corpus.upper()}   N={st['n_docs']:,}")
         print(f"    S+ {st['N_pos']:,} ({Wp*100:.3f}%) sampled {np_:,}   "
               f"S- {st['N_neg']:,} sampled {nn:,}")
-        print(f"    {'cat':<4}{'name':<32}{'S+':>6}{'S-':>6}{'weighted':>11}   95% CI")
-        print("    " + "-" * 74)
+        print(f"    {'cat':<4}{'name':<32}{'S+':>6}{'S-':>6}{'weighted':>11}"
+              f"   {'95% CI':<22}{'UNANIM':>10}{'unan%':>6}")
+        print("    " + "-" * 96)
+
+        # Unanimous (3-0) counts alongside majority (2-of-3).
+        #
+        # WHY BOTH, ALWAYS: on c4 S- the measured rate moves 3.6x for P and
+        # 9.5x for Q depending purely on which threshold you use. Reporting
+        # only one of them is choosing a number without telling the reader
+        # there was a choice -- and the majority rate is the larger one, which
+        # is the direction that favours whoever wants a bigger effect.
+        up = Counter(r["panel_label"] for r in pos if r.get("n_agree") == 3)
+        un = Counter(r["panel_label"] for r in neg if r.get("n_agree") == 3)
 
         rates = {}
         for c in CATS:
@@ -138,10 +149,26 @@ def main():
             var = Wp**2 * pp * (1 - pp) / np_ + Wn**2 * pn * (1 - pn) / nn
             se = math.sqrt(var)
             lo, hi = max(0.0, est - 1.96 * se), est + 1.96 * se
+
+            ukp, ukn = up.get(c, 0), un.get(c, 0)
+            uest = Wp * (ukp / np_) + Wn * (ukn / nn)
+            unan_frac = (ukp + ukn) / (kp + kn) if (kp + kn) else None
+
             rates[c] = {"k_pos": kp, "k_neg": kn, "estimate": est,
-                        "se": se, "ci": [lo, hi]}
+                        "se": se, "ci": [lo, hi],
+                        "k_pos_unanimous": ukp, "k_neg_unanimous": ukn,
+                        "estimate_unanimous": uest,
+                        "unanimity": unan_frac}
+            u = f"{unan_frac*100:>5.0f}%" if unan_frac is not None else "    -"
             print(f"    {c:<4}{NAMES[c]:<32}{kp:>6}{kn:>6}{est*100:>10.4f}%"
-                  f"   [{lo*100:.4f}%, {hi*100:.4f}%]")
+                  f"   [{lo*100:.4f}%, {hi*100:.4f}%]"
+                  f"   {uest*100:>9.4f}%{u}")
+
+        print(f"\n    NOTE: last two columns are the UNANIMOUS (3-0) rate and the")
+        print(f"    fraction of that category's labels that were unanimous. A low")
+        print(f"    unanimity fraction means the judges could not agree the")
+        print(f"    category applies -- which is a finding about the CATEGORY, not")
+        print(f"    a rate to be quoted without it.")
 
         # unresolved 3-way splits -- the only items needing a human
         splits = sum(1 for r in pos + neg if r.get("needs_human"))
@@ -207,9 +234,15 @@ def main():
         print(f"    P={P*100:.4f}%  P+Q={(P+Q)*100:.4f}%  "
               f"denial={denial*100:.4f}%  affirm={C*100:.4f}%")
 
+        Pu = rt["P"]["estimate_unanimous"]
         f1 = P > 0.01
+        f1u = Pu > 0.01
         print(f"    {'🚨 FIRED' if f1 else '   ok   '} F1  P>1% would refute H1"
-              f"  -> P={P*100:.4f}%")
+              f"  -> majority P={P*100:.4f}%")
+        print(f"    {'🚨 FIRED' if f1u else '   ok   '} F1  on UNANIMOUS labels"
+              f"       -> unanimous P={Pu*100:.4f}%")
+        print(f"       H1 verdict is {'THE SAME' if f1 == f1u else 'THRESHOLD-DEPENDENT'}"
+              f" under both thresholds.")
         if vintage_2019:
             print("       F2/F3 NOT EVALUATED -- DEV-06: this corpus predates the")
             print("       phenomenon. Denial/affirmation are not measurable here.")
