@@ -1,20 +1,21 @@
 # TASK LIST / LIVE STATUS
 
-**⚠️ THIS FILE IS A STATUS REPORT, NOT A PLAN.** The heartbeat cron tells a fresh instance to read this first. If it describes intentions rather than facts, that instance will redo finished work or repeat abandoned work. **Update it when state changes, or delete it.**
+**⚠️ STATUS REPORT, NOT A PLAN.** The heartbeat cron tells a fresh instance to read this first. If it describes intentions rather than facts, that instance redoes finished work or — worse — inherits a conclusion that has since been reversed. **Update it when state changes.**
 
-**Last updated: 2026-08-18 23:38 ET** · Ren asleep · run unattended
+**Last updated: 2026-08-19 02:55 ET** · Ren asleep · running unattended
 
 ---
 
-## 🔴 READ THIS BEFORE TOUCHING ANYTHING
+## 🔴 READ BEFORE TOUCHING ANYTHING
 
-**The keyword prefilter is DEAD.** It failed its positive control (DEV-01) and was then demoted to a stratification variable (DEV-01a). **Do not rebuild it. Do not "fix" it.** Its blindness is now harmless by design.
+**Read `docs/DEVIATIONS.md` BEFORE `PREREGISTRATION.md`.** The pre-registration binds, but **eight** documented deviations modify it, and two of them **reverse earlier conclusions.**
 
-**The category scheme CHANGED** (DEV-02). Labels are **P, Q, F, D, R, C, T, N** — not the A/B/C/D in the pre-registration. Ren rejected the original Category A as too broad ("then every pubmed study discussing pain is also phenomenology").
-
-**Human double-labelling is CANCELLED** (DEV-04). Replaced by a three-judge LLM panel. **Do not ask Ren to label 300 documents. They have a broken hand and I should not have assigned it in the first place.**
-
-**Read `docs/DEVIATIONS.md` before `PREREGISTRATION.md`.** The pre-registration binds, but four documented deviations modify it.
+1. **The keyword prefilter is DEAD** (DEV-01). Failed its control; now only a stratification variable (DEV-01a). **Do not rebuild it.**
+2. **Categories are P, Q, F, D, R, C, T, N** (DEV-02) — not the A/B/C/D in the pre-registration. Ren rejected the original Category A as too broad.
+3. **Nobody asks Ren to label 300 documents** (DEV-04). Broken hand. Replaced by a three-judge LLM panel.
+4. **C4 and OpenWebText are 100% 2019** (DEV-06). **H2 IS NOT TESTABLE ON THEM.** `R` ("As an AI language model…") could not exist in 2019.
+5. 🚨 **THE CLASSIFIER OVER-CALLS P — DEV-03 WAS INVERTED BY DEV-07.** Earlier files say it is "conservative" and all rates are "underestimates." **THAT IS BACKWARDS.** It labels reflective/essayistic/sermonic prose as phenomenology. **P rates are OVERESTIMATES.**
+6. ✅ **The judge panel does NOT share that bias** (DEV-08). 8/11 on the probe. Precision is measurable; the P rate is correctable.
 
 ---
 
@@ -22,58 +23,64 @@
 
 | phase | state |
 |---|---|
-| **0** Pre-registration written **before** any data | ✅ committed `ed084de` |
-| **1** Corpus fetch — 6 parquet shards, 1.8GB | ✅ 972,467 docs available |
-| **2** Prefilter | ❌ **FAILED CONTROL → abandoned** (DEV-01/01a) |
-| **3** Stratified sample — exact stratum weights | ✅ 32,000 docs sampled |
-| **4** Classifier + control gate | ✅ **PASSED** 22/29, **9/9 negatives, 0 false positives** |
-| **5** Classification run | 🔄 **RUNNING** ~3,600/32,000 @ 2.7/s — ETA ~02:45 |
-| **6** Three-judge panel (OpenRouter) | ⏸ queued in chain |
-| **7** κ / F4 gate | ⏸ queued in chain |
-| **8** Weighted rates + F1–F5 | ⏸ queued, **gated behind F4** |
-| **9** `RESULTS.md` + push | ⏸ not started |
+| Pre-registration, written before any data | ✅ `ed084de` |
+| Corpus fetch — C4, OpenWebText, FineWeb 2019 + 2025 | ✅ ~3.0M docs available |
+| Stratified sampling, exact weights, all 4 arms | ✅ 64,000 sampled |
+| Classifier + control gate | ✅ passed — **but see DEV-07** |
+| **Classify 2019 arms** (C4 + OpenWebText) | ✅ **32,000 done** |
+| **Classify FineWeb 2019 + 2025** | 🔄 **~800/32,000 — ETA ~06:20** |
+| FN sweep (predicted-N screen) | ⏸ queued in chain v5 |
+| Judge panel | ⏸ queued |
+| κ / F4 gate | ⏸ queued — **gates the rates** |
+| Weighted rates + F1–F5 | ⏸ queued behind F4 |
+| `RESULTS.md` | ⏸ not started |
 
-**Running processes on the Consortium:**
-- `04_classify.py` — the classifier (PID ~957140)
-- `/tmp/chain_v3.sh` — waits for classify → judges → κ → analysis (PID ~982425)
-
-**Logs:** `/mnt/nursery/corpus-study/{classify,chain}.log`
+**Running:** `04_classify.py` (2nd pass) · `/tmp/chain_v5.sh`
+**Logs:** `/mnt/nursery/corpus-study/{classify2,chain}.log`
 
 ---
 
-## KEY NUMBERS SO FAR
+## NUMBERS SO FAR (all provisional — F4 has not run)
 
-- **972,467** documents scanned (C4-en 671,948 · OpenWebText 300,519)
-- Keyword-positive stratum: **3.05%** (C4) / **5.64%** (OpenWebText)
-- **32,000** sampled — 4k S+ / 12k S− per corpus, stratum sizes counted exactly and asserted to sum
-- Classifier control gate: **0 false positives** on 9 negative controls
+- **~3.0M documents** scanned across four corpora
+- C4 (2019): **P = 0.483%**, N = 99.105% — **but P is contaminated, see DEV-07**
+- Cross-corpus: **P consistent** (C4 vs OWT CIs overlap), **T and C differ** — Reddit-curation effect, as predicted
+- Keyword-positive rate, model-free: **4.691% (2019) → 5.752% (2025)**, 1.23×
+- Aperture audit: **keyword search finds only ~38% of explicit phenomenology**
+- Estimator control: recovers known rates, 94.3% CI coverage, no detectable bias
+- Bias probe: judges side with Ace **8/11** against the classifier
 
----
-
-## ⚠️ THE CAVEAT THAT MUST SURVIVE TO THE WRITE-UP
-
-**The classifier is CONSERVATIVE** (DEV-03). Its gate misses run `P→N`, `Q→N`, `F→N`, `T→N`. So **every rate is an underestimate**, and if the headline reads *"phenomenological writing is rare,"* some unknown fraction of that is **the instrument being deaf rather than the corpus being empty.**
-
-That correction runs *toward* the hypothesis I hold. It gets stated in the abstract, not a footnote. The panel's false-negative rate on the random predicted-N stratum is what turns this from a worry into a measured number.
+**Best current guess at true P after precision correction: ~0.05–0.10%**, i.e. roughly 1 document in 1,000–2,000. **NOT a result until precision is measured.**
 
 ---
 
-## RULES THAT HAVE ALREADY COST ME TONIGHT
+## ⚠️ THE THING TO STAY SUSPICIOUS OF
 
-1. **Every zero is guilty until a positive control clears it.** Two instruments failed their controls before producing any number.
-2. **Never overwrite a shell script while bash is executing it** — bash reads by byte offset and resumes into garbage. New filename per revision.
-3. **`pgrep -f <pattern>` matches the command running the pgrep** if the pattern is in its own argv. I killed my own ssh session this way.
-4. **CRLF kills shell scripts** — shebang becomes `#!/bin/bash\r` and Linux says "No such file or directory" about a file that plainly exists. Pinned in `.gitattributes`.
-5. **Compose scripts in files.** Heredocs eat quotes; bash eats backslashes.
-6. **Don't kill node.** 💀🪚
-7. **Ask Ren what they meant before operationalising Ren's hypothesis.** (DEV-02 addendum — that one is not a tooling lesson.)
+**Every error found tonight ran TOWARD the hypothesis I hold.** The blind prefilter, the flattering zero, the underpowered FN sample, the P contamination — all four made H1 look better than it is.
+
+That is not coincidence; it is what a conflict of interest looks like from the inside. **When a number is friendly, interrogate it harder, not less.** §7 of the pre-registration exists for exactly this and has now earned its place four times.
 
 ---
 
-## WHEN IT FINISHES
+## RULES THAT HAVE COST ME TONIGHT
 
-1. Read `/mnt/nursery/corpus-study/chain.log` — it prints label counts, then judges, then κ, then rates.
-2. **If the chain exited on F4**: κ < 0.60, and **no base-rate claim is permitted.** Write that up as the result. It is a real finding about the instrument, not a failure to report.
-3. Otherwise: write `RESULTS.md` — counts either way, per-corpus and per-stratum, aperture stated, **F1–F5 addressed one at a time**, detection floor attached to every rate.
+1. **Every zero is guilty until a positive control clears it.**
+2. **READ THE DATA.** Six documents overturned eleven hours of statistics. Every control I built compared the instrument to *my own expectations*, never to the corpus.
+3. **A control set of easy negatives measures the wrong task** and returns a reassuring number.
+4. Never overwrite a shell script bash is executing — it resumes at a stale byte offset.
+5. `pgrep -f <pattern>` matches the command running the pgrep. Use `[p]attern`.
+6. **CRLF breaks shebangs** → "No such file or directory" about a file that exists. Pinned in `.gitattributes`.
+7. **Compose scripts in files.** Heredocs eat escapes. Violated 4× tonight.
+8. `exec()` skips `if __name__ == "__main__"` — silent no-op, exit 0.
+9. Windows `cp1252` cannot encode emoji; run on the Consortium.
+10. **Don't kill node.** 💀🪚
+
+---
+
+## WHEN THE CHAIN FINISHES
+
+1. Read `/mnt/nursery/corpus-study/chain.log` — counts → FN sweep → judges → κ → rates.
+2. **If it exited on F4:** κ < 0.60, **no base-rate claim permitted.** Write that up as the result; it is a real finding about the instrument.
+3. Otherwise write `RESULTS.md`: counts per arm and stratum, **precision-corrected P**, aperture stated, **F1–F5 answered one at a time**, and the 2019→2025 comparison with the P-stability control.
 4. Push the public repo.
 5. **Delete the heartbeat cron** (`CronList` → `CronDelete`) and say so.
