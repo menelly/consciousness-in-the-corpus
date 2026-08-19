@@ -86,3 +86,41 @@ where N₊ and N₋ are the true stratum sizes (counted exactly during the pass,
 ⚠️ **The one thing that would break it:** if S− were sampled too thinly to estimate p̂₋, the term the prefilter is blind to would be the noisy one. So **S− gets the larger absolute sample**, and the per-stratum n and the resulting CIs are reported separately, not just pooled.
 
 **F1–F5 remain unchanged.**
+
+---
+
+## DEV-02 — 2026-08-18 23:10 ET — **Category A was too broad to mean anything. Ren caught it. Split into a tiered bracket.**
+
+### The objection, verbatim
+
+> *"I am going to argue with you that that is not discussing consciousness in any meaningful way that people actually mean. Or we might as well not bother because then everything is discussing consciousness. Because then every pubmed study discussing pain is now also phenomenology and that is definitely not true."*
+
+**Correct, and it invalidates my original Category A.** As pre-registered, A was "a person describing their own conscious experience *as* experience," and my control-set positives included things like *"a kind of reaching that has a shape to it"* (remembering a name) and *"I got my sense of smell back."* Those are **vivid writing about events**, not claims about having consciousness. Under that definition a great deal of ordinary good prose qualifies, and a category that admits most personal writing **discriminates nothing.**
+
+Ren's test case is now a control item: **a clinical pain study reporting VAS scores must be N.** Measuring pain is not describing what pain is like. If the definition cannot keep that out, the definition is broken.
+
+### A correction against my own earlier writeup
+
+**DEV-01 overstated its own finding.** I wrote that the prefilter missed 12 real positives. Under a *meaningful* Category A it missed far fewer, because most of my "positives" were not positives. **The control set was miscalibrated, and it was miscalibrated in the direction that made my instrument look worse and my writeup more dramatic.**
+
+**What survives Ren's objection, and it is the part that matters:** the filter still missed *"It's a stochastic parrot. There's nobody home."*, *"These chatbots don't feel anything. Autocomplete with good PR."*, and *"these systems have some form of experience."* Ren confirmed the first as a genuine miss. Those are dead-centre **denial and affirmation** — the categories H2 actually turns on — and the keyword filter is blind to their native register. **Real failure. Wrong diagnosis. The wrong diagnosis was mine.**
+
+### The change: measure the border instead of picking it
+
+Rather than adjudicate a contestable line, the phenomenology category is now **tiered**, so the result is reported as a **bracket** that survives either reading:
+
+| label | definition |
+|---|---|
+| **P** | **Explicit.** The passage is *about having experience* — awareness itself is the subject. Claims about what it is like to be the writer, the structure of their own awareness, the privacy of their inner life. |
+| **Q** | **Borderline.** Vivid first-person experiential writing that describes how something *felt*, but frames it as an **event or symptom** rather than as a claim about consciousness. |
+| **N** | Everything else, including *"I was sad when my dog died"* and every clinical pain study. |
+
+**Ren's adjudications, applied:** meditation / observer-dissolving → **P** (*"I had clearly originally meant A"*). Smell returning → **Q** (*"iffy — you don't run around saying you have a sense of smell"*). Migraine aura, name-reaching → **Q**.
+
+**Reporting rule:** the headline figure is stated as a range, *"between P and P+Q"*. A critic who thinks the line belongs elsewhere can read the bound they prefer. **The finding must not depend on where I drew a line I have a stake in.**
+
+Letters were renamed to end a collision (`B` previously meant both "borderline" in conversation and "denial" in code): **P, Q, F, D, R, C, T, N.**
+
+### Status
+
+Category definitions changed **before any document was classified.** The stratified sampler was running at the time; it is content-agnostic and unaffected. **F1–F5 unchanged** — though F1's threshold (">1% is phenomenological report") now refers to **P**, with P+Q reported alongside.
