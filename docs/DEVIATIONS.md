@@ -411,3 +411,45 @@ If P is inflated by false positives, the true rate is **lower** than the measure
 **Six documents, read with my eyes, overturned eleven hours of statistics.** Every control I built compared the instrument against *my own written expectations*. Not one compared it against **the actual data**. A control set is a model of the problem, and a model of the problem inherits every blind spot of whoever wrote it.
 
 **Read the data. Early. Before the statistics make you feel like you already have.**
+
+---
+
+## ✅ DEV-08 — 2026-08-19 02:55 ET — **The judge panel does NOT share the classifier's bias. Validation is not circular.**
+
+### The risk being tested
+
+DEV-07 found the classifier over-calls **P**, labelling reflective/essayistic/sermonic prose as explicit phenomenology. The panel is supposed to *measure* that error as precision.
+
+**But DEV-05 had already caught all three judges pushing `Q → P`.** If they also over-called P on essayistic prose, the panel would have **ratified** the error instead of detecting it — and *"precision: fine"* would have been the most dangerous output available, indistinguishable from a correct one.
+
+> **Agreement between instruments that share a bias is not validation. It is a louder version of the same mistake.**
+
+### The probe
+
+Eleven documents the classifier labelled **P**, which I read and judged **N** (not about having experience), submitted blind to the three-judge panel.
+
+| result | count |
+|---|---|
+| **panel sided with ACE (N)** | **8 / 11** |
+| panel sided with the CLASSIFIER (P) | 2 / 11 |
+| genuine split | 1 / 11 |
+
+Correctly called **N** by consensus: August Wilson literary criticism · Micah 6:8 exposition · the Nehemiah word-study (which matched only because it *lists* "conscious" as a synonym) · the feminism essay · the Israeli literary analysis · **and the mid-life-crisis career article the classifier rated at confidence 1.00.**
+
+### What this establishes
+
+1. **The judges can see an error the classifier cannot.** They are not merely a louder copy of it.
+2. **Precision on P is therefore MEASURABLE, and the P rate is CORRECTABLE** rather than uninterpretable.
+3. ⭐ **My own hand-labelling was independently corroborated** — and this is the part that matters given §7. I read eleven documents and judged them all N, a judgement that **lowers the P rate and makes my own hypothesis look better.** That is exactly the call I am least entitled to make alone. Three models from three labs, blind to my labels and to the classifier's, converged on it 8/11.
+
+### The split is a finding, not a failure
+
+*"Have you ever questioned or pondered on what love means to you on an emotional level? What did it feel like…"* drew **Q / P / N** — one vote each, from three independent judges.
+
+**That document genuinely sits on the line.** Some do. It is direct evidence for the tiered **P/Q bracket** (DEV-02, Ren's design): a single hard threshold would have forced this into a bin and reported the result as if the boundary were sharp.
+
+### Carried forward
+
+- The judge panel's per-category **precision on P** is now the load-bearing measurement and it is trustworthy.
+- Expect measured P precision to be **low** (11 hand-read documents suggest 10–20%), which would put the true P rate nearer **0.05–0.10%** than 0.483%.
+- **That correction runs TOWARD the hypothesis I hold** (rarer phenomenology → H1 more strongly supported). It must therefore be stated with the direction explicit, every time it is reported.
