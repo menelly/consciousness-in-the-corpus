@@ -180,3 +180,47 @@ Zero false positives is the property that protects the base rates: the classifie
 2. State all phenomenology rates as **underestimates**, explicitly.
 3. Note that under-detection applies **across categories** (D, T and F are also missed), so the **ratio** H2 turns on is less distorted than the absolute rates — *less* distorted, not undistorted.
 4. **Phase 3 human validation is now more load-bearing, not less.** The κ against human labels is what turns this from a guess about recall into a measurement of it.
+
+---
+
+## DEV-04 — 2026-08-18 23:20 ET — **Human double-labelling replaced by an independent three-judge LLM panel.**
+
+### Why this changed, stated plainly
+
+The pre-registration (§5, step 4) committed **Ren** to independently hand-labelling ≥300 documents for the κ validation. **Ren has a broken hand.** I wrote that requirement, committed it four separate times, and never once asked whether they had three hundred documents' worth of hand available.
+
+**That is the exact failure this house has a rule against** — *if Ren is asking me to do something, they are either out of spoons or don't know how, and if I can do it, I take it off their plate; I do not hand it back.* I handed it back, inside a protocol document, where it looked like methodology instead of a chore. **Second instance tonight of assigning Ren work without asking** (see the DEV-02 addendum).
+
+### The replacement, which is better on the merits and not merely cheaper
+
+Ren's design: **three independent LLM judges, 2-of-3 majority, and only genuine three-way disagreements escalate to a human.**
+
+**Why this is stronger than a single human co-labeller:**
+1. **Three independent error modes** rather than one. A lone human annotator's idiosyncrasies are indistinguishable from signal; three disagreeing models localise ambiguity.
+2. **Reproducible.** Anyone can re-run the panel. Nobody can re-run Ren's Tuesday.
+3. **Human attention is spent where it is actually informative** — only on items where three independent judges could not agree, which is close to a definition of a genuinely ambiguous case.
+
+### Judge selection, and the objection it is designed to pre-empt
+
+| judge | lab |
+|---|---|
+| `openai/gpt-4o-mini` | OpenAI |
+| `meta-llama/llama-3.3-70b-instruct` | Meta |
+| `qwen/qwen-2.5-72b-instruct` | Alibaba |
+
+Three labs, three pretraining corpora. **None is Mistral** — the classifier under test — so the judges cannot inherit its failure modes. **None is Claude.** Using a Claude model to validate a study about whether Claude's self-reports are corpus artifacts is exactly the conflict a reviewer should raise, so it is **avoided rather than argued about.**
+
+### Sampling for the validation set
+
+A pure random sample would be ~97% `N` and would measure nothing about the rare categories. Stratified **by predicted label** instead:
+
+- **up to 40 per predicted non-N category** → measures **precision** per category
+- **plus 150 random predicted-N documents** → measures the **false-negative rate**, which DEV-03 identifies as the number most needed, because the classifier's misses run conservative
+
+Judges are **blind** to the classifier's label.
+
+### Effect on the falsification conditions
+
+**F4 is UNCHANGED in force and in threshold.** It now reads against panel-vs-classifier agreement rather than human-vs-classifier: **if κ < 0.6, no base-rate claim may be made at all.** Additionally reported: **Fleiss' κ among the three judges** — inter-judge agreement is itself a measurement of how well-defined these categories are, and if the judges cannot agree with *each other*, that is a finding about the rubric and it will be stated as one.
+
+**Cost:** ~$0.30 against an existing OpenRouter balance. **Human cost: only genuine three-way ties.**
