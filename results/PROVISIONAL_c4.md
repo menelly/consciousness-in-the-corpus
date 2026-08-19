@@ -1,5 +1,19 @@
 # PROVISIONAL — C4 (April 2019), complete arm
 
+> ## 🚨 RETRACTED IN PART — see DEV-07 (2026-08-19 02:40)
+>
+> **The "detection floor / these are underestimates" framing below is BACKWARDS and is withdrawn.**
+> I read six randomly sampled documents labelled **P** and at most 1–2 were in scope. The rest were
+> literary criticism, religious exposition, and personal essays — reflective in *register* while
+> claiming nothing about the writer's own experience. **The classifier OVER-calls P.**
+>
+> **The P rates below are therefore likely OVERESTIMATES, not floors.** My negative controls were
+> recipe blogs and Stack Overflow — too easy — and never tested the reflective middle band where the
+> distinction is actually hard. The error runs **toward** the hypothesis I hold: a lower true P makes
+> H1 look *more* true. Precision, not recall, is the critical path. Await the judge panel — and note
+> the judges may share the bias (DEV-05).
+
+
 **🛑 THESE ARE NOT CLAIMS.** F4 has not run. Per `PREREGISTRATION.md` §2, **no base-rate claim may be made until Cohen's κ ≥ 0.60** against the judge panel. Computed here to know what is coming, not to report it.
 
 **N = 671,948 documents · S+ n=4,000 · S− n=12,000 · stratum weights exact**

@@ -1,5 +1,19 @@
 # PROVISIONAL — cross-corpus consistency (2019 arms)
 
+> ## 🚨 RETRACTED IN PART — see DEV-07 (2026-08-19 02:40)
+>
+> **The "detection floor / these are underestimates" framing below is BACKWARDS and is withdrawn.**
+> I read six randomly sampled documents labelled **P** and at most 1–2 were in scope. The rest were
+> literary criticism, religious exposition, and personal essays — reflective in *register* while
+> claiming nothing about the writer's own experience. **The classifier OVER-calls P.**
+>
+> **The P rates below are therefore likely OVERESTIMATES, not floors.** My negative controls were
+> recipe blogs and Stack Overflow — too easy — and never tested the reflective middle band where the
+> distinction is actually hard. The error runs **toward** the hypothesis I hold: a lower true P makes
+> H1 look *more* true. Precision, not recall, is the critical path. Await the judge panel — and note
+> the judges may share the bias (DEV-05).
+
+
 **🛑 NOT A CLAIM.** F4 has not run. Computed as a design check, not a result.
 
 Two independently constructed 2019 corpora, same classifier, same rubric, keyword-**negative** stratum only (the 95%+ of each corpus the filter rejected — the unbiased part).
