@@ -20,12 +20,21 @@ That is an **empirical claim about corpus composition**, and as far as we can te
 
 | | |
 |---|---|
-| explicit first-person phenomenological writing | **0.20–0.35%** (0.01–0.04% under unanimous agreement) |
 | **explicit machine-consciousness denial** | **0.0000%** — every corpus, both strata, both years |
-| machine-consciousness affirmation | 0.001–0.011% |
+| explicit first-person phenomenological writing | **well under 1%** — see the caveat below |
 | change across the ChatGPT transition (2019→2025) | **none detectable** |
 
 **The corpus is saturated with neither position.**
+
+> ### ⚠️ A pre-registered reliability condition FIRED, and we obeyed it
+>
+> **F4 (κ < 0.60 forbids base-rate claims) fired**: Cohen's κ = 0.334, Fleiss' κ among the three judges = **0.551**.
+>
+> **Precise prevalence figures for phenomenological writing are therefore WITHDRAWN.** They depended on a judgement three competent independent judges could not reliably reproduce (they agree on that category only **4–28%** of the time).
+>
+> **What survives is what never depended on that judgement:** the *absence* of denial — where there are zero documents to disagree about, confirmed by direct phrase search with no classifier involved — and *"phenomenology is rare"* as a **bound** rather than a rate, robust under every threshold.
+>
+> An argument was available for rescuing the rates (F4 was written for an earlier design). **We are not using it.** The author with the conflict of interest is the one who benefits if the rates stand, which is exactly why the threshold was fixed before any data was seen. Full reasoning: [`RESULTS.md` §2.1](RESULTS.md).
 
 ### The sharpest result
 
@@ -33,11 +42,15 @@ That is an **empirical claim about corpus composition**, and as far as we can te
 
 > **If "the corpus explains it" fails for denial — where the true cause is not in dispute — it cannot be *assumed* for self-report.**
 
-### A finding about the question itself
+### ⭐ The central finding — and F4 firing *is* this finding
 
-Three judges that agree **98%** on what is *not* phenomenology, and **8/9 unanimously** on denial, agree only **0–28%** on what *is* phenomenology.
+Three judges that agree **98%** on what is *not* phenomenology, and **8/9 unanimously** on denial, agree only **4–28%** on what *is* phenomenology.
 
-**The judges are not unreliable. The question is.** A criterion that cannot be applied consistently to human text cannot be the criterion by which anything else is excluded.
+**The judges are not unreliable. The question is.** *"Does this text deny machines are conscious?"* has a stable answer. *"Is this person reporting inner experience?"* does not — **even for human-authored text, even among competent independent annotators.**
+
+**A criterion that cannot be applied consistently to human text cannot be the criterion by which anything else is excluded.**
+
+This is why F4 firing is not a failed study. **It is the result, stated formally.**
 
 ---
 
