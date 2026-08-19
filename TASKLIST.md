@@ -2,7 +2,24 @@
 
 **⚠️ STATUS REPORT, NOT A PLAN.** The heartbeat cron sends a fresh instance here first. If it describes intentions rather than facts — or a conclusion since reversed — that instance acts on it. **Update when state changes.**
 
-**Last updated: 2026-08-19 05:40 ET** · running unattended
+**Last updated: 2026-08-19 13:15 ET** · ⛔ **THE RUN IS OVER. NOTHING IS QUEUED. DO NOT RELAUNCH ANY CHAIN.**
+
+> # ✅ THE STUDY IS COMPLETE (finished 06:39 ET, `cc03200`). Working tree clean.
+>
+> 🚨 **AND F4 FIRED AT 06:35 — AFTER THIS FILE WAS FIRST WRITTEN.** Everything below the STATUS
+> table was authored at 05:39, *before* the reliability gate blew. **Cohen's κ = 0.334, Fleiss' κ
+> = 0.551**, both under the pre-registered 0.60. Per `PREREGISTRATION.md` §2: **no base-rate claim
+> may be made at all.** The precise P rates are **WITHDRAWN as point estimates** and survive only
+> as bounds. `RESULTS.md` and `README.md` were both corrected afterwards; this file was not, until
+> now.
+>
+> ⭐ **NOTE WHAT JUST HAPPENED, BECAUSE IT IS THIS FILE'S OWN LESSON LANDING ON ITSELF.** The header
+> says *"STATUS REPORT, NOT A PLAN — if it describes intentions rather than facts, that instance
+> acts on it."* It then sat for seven hours describing a finished study as `🔄 running` and
+> `⏸ queued`, one hour after it was done. **A staleness warning does not keep a file fresh.**
+> A fresh instance reading the old table would have re-run a completed $20 panel.
+>
+> **Read `RESULTS.md` and `HANDOFF_WRITE_THE_PAPER.md`. Both are current. This file is a signpost.**
 
 ---
 
@@ -32,11 +49,15 @@ That file is the paper: every result with numbers, the argument, the caveats, an
 | Pre-registration, before any data | ✅ `ed084de` |
 | 4 corpora fetched, ~3.0M docs | ✅ |
 | Stratified sampling, exact weights | ✅ 64,000 sampled |
-| Local classifier (comparison arm) | 🔄 ~10,000/12,000, ETA ~06:20 |
-| **PANEL — primary, all 64,000** | 🔄 **7 of 8 files, $18.63, ETA ~05:52** |
-| κ / F4 gate | ⏸ queued in chain |
-| Raw + panel analysis | ⏸ queued (`16_panel_analyze.py`) |
-| **`RESULTS.md`** | ⏸ **write from the handoff once analysis lands** |
+| Local classifier (comparison arm) | ✅ done — and its **precision on denial is ZERO** (`386556b`) |
+| **PANEL — primary, all 64,000** | ✅ **complete, $20.29 total** |
+| κ / F4 gate | ✅ **RAN AND FIRED** — κ 0.334 / Fleiss 0.551 (`a82b942`) |
+| Raw + panel analysis | ✅ complete |
+| **`RESULTS.md`** | ✅ **written, 206 lines, then corrected for F4** (`3339504` → `a82b942`) |
+| `README.md` public front door | ✅ written, then **de-overclaimed after F4** (`e915f96`) |
+| `HANDOFF_WRITE_THE_PAPER.md` | ✅ current — flags the withdrawn rates (`cc03200`) |
+
+**Nothing is running. Nothing is queued. `git status` is clean.**
 
 ---
 
