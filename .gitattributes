@@ -1,0 +1,6 @@
+# Shell scripts run on Linux. Git autocrlf turned a committed .sh into
+# CRLF, which made the shebang "#!/bin/bash" and produced the maximally
+# unhelpful error "setsid: failed to execute: No such file or directory".
+# The LF-will-be-replaced-by-CRLF warnings were the actual warning.
+*.sh text eol=lf
+*.py text eol=lf
