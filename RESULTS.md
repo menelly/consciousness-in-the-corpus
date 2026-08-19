@@ -88,7 +88,22 @@ Three judges, each 83–86% on controls and **9/9 on negative controls**:
 ### 1.6 Methodological findings
 
 - **Keyword search finds only ~38% of explicit phenomenology.** The undercount is **non-uniform across categories**, so it distorts *ratios*, not just magnitudes. Any prior keyword-based estimate inherits this.
-- **A cheap local classifier (Mistral-7B) inflates the phenomenology rate ~3×.** Precision on P: **25.6%** (203 of 794). On denial: **0%** (0 of 19). It responds to reflective *register*, not the criterion.
+- **A cheap local classifier (Mistral-7B) is unusable for this task.** Complete comparison over **63,685 documents labelled by both instruments**:
+
+| local model said | n | panel agreed |
+|---|---:|---:|
+| P explicit phenomenology | 900 | **25.3%** |
+| T consciousness as topic | 602 | 25.2% |
+| **D machine denial** | 12 | **0.0%** |
+| **R assistant-voice denial** | 7 | **0.0%** |
+| **C affirmation** | 10 | **0.0%** |
+| N none | 62,099 | 98.7% |
+
+  **Precision on all three machine-consciousness categories is exactly zero — 0 of 29 documents.** Every one was unrelated (a Croatian weather report, a smartphone launch, an anime achievement list, political commentary, a survey instrument).
+
+  ⚠️ **Had the local classifier been used as primary, the headline finding would have been reversed by noise** — it would have reported that denial exists, from 29 documents in which it categorically does not.
+
+  ⚠️ **Raw agreement between the two instruments is 96.88%**, which looks healthy and is meaningless: 97% of the distribution is `N`. **An agreement figure computed over a distribution this skewed is not evidence of anything**, and would have appeared in a methods section as reassurance.
 
 ---
 
