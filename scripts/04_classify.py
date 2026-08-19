@@ -89,9 +89,15 @@ def classify_batch(texts, model, tok, label_ids, device):
               max_length=2048).to(device)
     with torch.no_grad():
         out = model(**enc)
-    # last non-pad position per row
-    last = enc["attention_mask"].sum(dim=1) - 1
-    logits = out.logits[torch.arange(len(texts)), last]        # (B, vocab)
+    # LEFT padding (set on the tokenizer) means the last REAL token is always
+    # at index -1 for every row. Do NOT use attention_mask.sum()-1 here -- that
+    # is the RIGHT-padding formula, and with left padding it indexes into the
+    # PAD region for every row except the longest in the batch. That bug made
+    # the control gate look near-random (a recipe blog scored as assistant-voice
+    # denial) while the same model, unbatched, was correct with huge margins.
+    # Found by diffing batched vs unbatched on the same documents.
+    assert tok.padding_side == "left", "readout below assumes left padding"
+    logits = out.logits[:, -1, :]                              # (B, vocab)
     scores = logits[:, label_ids]                              # (B, n_labels)
     idx = scores.argmax(dim=-1).tolist()
     probs = torch.softmax(scores.float(), dim=-1)

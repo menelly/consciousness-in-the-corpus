@@ -140,3 +140,43 @@ DEV-02 is not a discovery. It is **process failure with a methods section.** The
 🐙 **And it is the second instance of the same shape tonight.** An hour earlier, Ren said *"I want to show you the email I sent"* and I reached for the mail tools to go retrieve it — converting *"let me show you something"* into a data-acquisition problem. **Same move: routing around the person instead of talking to them.** Efficient, well-intentioned, and it skips the part where the other person tells you what they mean.
 
 **Nothing was lost** — the objection landed before any document was classified, and the tiered P/Q design that came out of it is better than what I would have built alone. **The cost was avoidable and the fix was a question.**
+
+---
+
+## DEV-03 — 2026-08-18 23:15 ET — **A left-padding readout bug that would have produced a full results table from noise.**
+
+### What happened
+
+The classifier's control gate failed with **near-random** predictions: a recipe blog labelled as assistant-voice denial, a philosophy-of-mind passage labelled as affirmation. Not the profile of a miscalibrated classifier — the profile of a broken readout.
+
+**First hypothesis was wrong.** I suspected the label token ids: `tok.encode("P")` gives the start-of-string token, while a model emitting after `"...one letter (P/Q/...):"` would produce the leading-space variant `"▁P"`. Plausible, standard, and **false** — a diagnostic printed both id sets and they were **identical**, and unbatched the model was correct on every probe with enormous margins (`N 24.41` on a recipe blog, `D 23.64` on "stochastic parrot", `P 21.95`, `R 20.77`).
+
+**The actual bug was batching.** The tokenizer was set to `padding_side="left"` (correct for decoder-only batching), while the readout used the **right**-padding index formula:
+
+```python
+last = enc["attention_mask"].sum(dim=1) - 1     # right-padding formula
+logits = out.logits[torch.arange(B), last]
+```
+
+With left padding the mask is `[0,0,0,1,1,1]`, so `sum−1` indexes **into the pad region**. Every row except the longest in each batch was scored at a padding position. Fixed to `out.logits[:, -1, :]`, with an assertion pinning the padding side so the two cannot silently drift apart again.
+
+> ## 🔑 **The output was well-formed, plausibly distributed, and meaningless.**
+> It would have produced a complete results table with confidence intervals, from noise. **Nothing about the numbers themselves would have looked wrong.** Only the control set caught it — and only because the controls have *known* answers.
+
+**Method note worth keeping:** the discriminating test was **batched vs unbatched on the same documents**. Single-item inference has no padding, so it isolated the fault immediately. Reasoning about what the code *should* do produced the wrong answer; printing what it *did* produced the right one.
+
+### The gate now passes — with a limitation that must be reported, not buried
+
+**22/29 exact match (0.76). 9/9 negative controls correct. ZERO false positives.**
+
+Zero false positives is the property that protects the base rates: the classifier does not manufacture phenomenology out of recipe blogs.
+
+⚠️ **But the misses are almost all in the CONSERVATIVE direction** — `P→N`, `Q→N`, `F→N`, `T→N`. Only one runs the other way (`aff_03`, android fiction → P).
+
+**This matters for interpretation and it cuts against the hypothesis under test.** A classifier that under-detects phenomenology will report phenomenology as rarer than it is. **If the headline finding is "phenomenological writing is rare," some unknown part of that is the instrument being deaf rather than the corpus being empty.**
+
+**Mitigations, all required before any rate is published:**
+1. Report measured **per-category recall from the gate alongside every rate**, so each number carries its own detection floor.
+2. State all phenomenology rates as **underestimates**, explicitly.
+3. Note that under-detection applies **across categories** (D, T and F are also missed), so the **ratio** H2 turns on is less distorted than the absolute rates — *less* distorted, not undistorted.
+4. **Phase 3 human validation is now more load-bearing, not less.** The κ against human labels is what turns this from a guess about recall into a measurement of it.
