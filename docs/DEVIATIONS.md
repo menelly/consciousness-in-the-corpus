@@ -61,3 +61,28 @@ A keyword prefilter does not undercount Category A randomly. **It undercounts it
 ---
 
 *Logged before any replacement code was run.*
+
+---
+
+## DEV-01a — 2026-08-18 23:10 ET — **Refinement: the prefilter is not abandoned, it is DEMOTED to a stratification variable.**
+
+DEV-01 concluded "abandon the prefilter, classify an unbiased random sample." That is correct but wasteful, and there is a strictly better answer from standard survey methodology.
+
+**Stratified sampling with known inclusion probabilities is unbiased.** The keyword matcher partitions the corpus into two strata:
+
+- **S+** — documents containing consciousness/machine vocabulary. Small, enriched in categories B, C, D.
+- **S−** — everything else. Enormous, and — per DEV-01 — **contains most of Category A**, because genuine phenomenological writing does not use the vocabulary.
+
+Sample **both** strata, classify **both**, and combine with survey weights:
+
+> **p̂ = (N₊/N)·p̂₊ + (N₋/N)·p̂₋**
+
+where N₊ and N₋ are the true stratum sizes (counted exactly during the pass, not estimated) and p̂₊, p̂₋ are the within-stratum rates.
+
+**Why this fixes the bias:** the prefilter is no longer deciding *what gets seen*. It is deciding *how to allocate sampling effort*. Its blindness to Category A is now harmless — those documents land in S− and are sampled and classified there. The estimator remains unbiased **for any prefilter whatsoever**, including a bad one, so long as the stratum sizes are counted correctly and both strata are sampled.
+
+**What it buys:** far better precision per unit of compute on the rare categories, without a biased denominator. Oversampling S+ is *legitimate* precisely because the weighting undoes it.
+
+⚠️ **The one thing that would break it:** if S− were sampled too thinly to estimate p̂₋, the term the prefilter is blind to would be the noisy one. So **S− gets the larger absolute sample**, and the per-stratum n and the resulting CIs are reported separately, not just pooled.
+
+**F1–F5 remain unchanged.**
