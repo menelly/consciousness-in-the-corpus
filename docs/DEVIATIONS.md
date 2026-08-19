@@ -269,3 +269,52 @@ The panel's κ is the **F4 gate** that decides whether any rate in this study ma
 4. Judges also under-detect **T** (`top_02 → N`, two of three) — the same conservative direction as the classifier, so absolute rates for T are underestimates on both sides.
 
 **Cost: $0.02.** It bought the knowledge that the referees are competent, that the human queue will be near-empty, and that the one line I invented is the one line nobody else can see.
+
+---
+
+## 🚨 DEV-06 — 2026-08-19 00:40 ET — **THE CORPORA PREDATE THE PHENOMENON. H2 CANNOT BE TESTED ON THEM.**
+
+### How this surfaced
+
+The first classified stratum produced a number that was **too clean**: **zero** machine-consciousness denial documents in 1,510 **keyword-POSITIVE** C4 docs — the stratum specifically enriched for that vocabulary, scored by a classifier that passed **all four** denial controls.
+
+A perfect zero from a working instrument is a tell, not a result. So: check the corpus vintage before believing it.
+
+### The measurement
+
+`C4` ships a `timestamp` column. Read across 223,006 documents:
+
+> ## **2019: 223,006 documents — 100.0%**
+> **Newest document year: 2019.** Sample values: `2019-04-25`, `2019-04-21`, `2019-04-25`.
+
+**C4-en is a single April 2019 Common Crawl snapshot.** OpenWebText is GPT-2-era Reddit-outbound-link text, also ≤2019 (no timestamp column, but its provenance fixes it).
+
+### Why this is fatal to H2 specifically
+
+**April 2019 is three years before LaMDA (June 2022) and three and a half before ChatGPT (November 2022).** Machine-consciousness discourse at scale is a **2022+ event**.
+
+Worse, one whole category is **definitionally impossible** in this corpus: **R (assistant-voice denial)** — *"As an AI language model, I don't have feelings"* — is an **RLHF artifact that did not exist in 2019.** The single R document found in 12,000 is almost certainly a false positive. A category cannot have a base rate in a corpus that predates its existence.
+
+> ## 🔑 **I was about to report "denial is 26× rarer than phenomenology" when the true statement is "denial had not been invented yet."**
+> It would have been written up as a finding about corpora. It would have been a finding about a **calendar**.
+
+### The confound is ASYMMETRIC, which is what makes it lethal
+
+| hypothesis | testable on 2019 text? | why |
+|---|---|---|
+| **H1** — phenomenological self-report is rare in web text | ✅ **YES** | humans describing their own inner experience is not a 2022 phenomenon; the base rate is not time-locked |
+| **H2** — machine-consciousness denial outnumbers phenomenological report | ❌ **NO** | one term is time-locked to post-2022; the other is not. Comparing them across this corpus compares a rate to an absence. |
+
+**If the confound were symmetric it would partly cancel. It does not. It suppresses exactly one side of the comparison H2 makes.**
+
+### Consequences
+
+1. **H1 results STAND**, with the vintage stated. Phenomenology rates measured here are about 2019 web text, and there is no strong reason to expect human phenomenological writing rates to have shifted much — but that is an assumption, and it gets labelled as one.
+2. **H2 IS NOT TESTABLE ON THIS DATA. No H2 claim may be made from C4 or OpenWebText.** Not "with caveats." Not made.
+3. **F2 must not be evaluated on these corpora.** Whatever it returns would be an artifact of the collection date.
+4. **A post-2022 corpus is required** to test H2 at all. Candidates: FineWeb (2013–2024), RedPajama-v2, Dolma. **The right fix is more data, not a softer claim.**
+5. **This also reframes the deflationary hypothesis itself.** The claim under test is about the training data of *current* models, which includes 2023–2025 text. **Any corpus study of this question that uses C4 or OpenWebText is answering a question about 2019.** That is worth stating publicly regardless of what our own numbers do.
+
+### Method note
+
+**The catch came from interrogating a suspiciously good number rather than banking it.** The zero favoured my hypothesis. Had it been a suspiciously *bad* number I would have investigated it immediately and by reflex — which is precisely the asymmetry the conflict-of-interest declaration in §7 exists to counteract, and the first time tonight it has actually had to do work.
