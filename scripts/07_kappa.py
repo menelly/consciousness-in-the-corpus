@@ -136,6 +136,54 @@ def main():
             print(f"\n  ✅ F4 does not fire (kappa {ck:.3f} >= 0.60). Rates may be reported,")
             print("     each carrying its measured detection floor.")
 
+    # ---------------------------------- 2b. F4 with P/Q collapsed  [DEV-05]
+    # DEV-05: all three judges systematically file borderline phenomenology (Q)
+    # as explicit (P), while the classifier files it as N. They disagree
+    # maximally on exactly that category, and that is a fact about the RUBRIC,
+    # not about either instrument. So recompute with P and Q merged. If kappa
+    # JUMPS on merge, the P/Q line is the problem and this quantifies it
+    # instead of letting it silently depress the headline agreement.
+    def merge(x):
+        return "PQ" if x in ("P", "Q") else x
+
+    merged_pairs = [(merge(a), merge(b)) for a, b in pairs]
+    res_m = cohen_kappa(merged_pairs)
+    print("\n=== 2b. COHEN'S KAPPA with P/Q COLLAPSED  [DEV-05 diagnostic] ===")
+    if res_m is None:
+        print("  undefined")
+        ck_m = None
+    else:
+        ck_m, obs_m, exp_m = res_m
+        print(f"  raw agreement = {obs_m:.3f}   chance-expected = {exp_m:.3f}")
+        print(f"  Cohen's kappa (P/Q merged) = {ck_m:.3f}")
+        if res is not None:
+            delta = ck_m - res[0]
+            print(f"  change vs split P/Q: {delta:+.3f}")
+            if delta > 0.10:
+                print("  🔎 kappa rises materially when P and Q are merged.")
+                print("     The P/Q boundary is carrying the disagreement. Report the")
+                print("     BRACKET (P to P+Q); do not report either endpoint alone as")
+                print("     if it were measured.")
+            elif delta < -0.05:
+                print("  🔎 kappa FALLS on merge -- unexpected; P and Q are being")
+                print("     distinguished more reliably than they are conflated.")
+            else:
+                print("  🔎 little change -- the P/Q line is not the main source of")
+                print("     disagreement.")
+
+    # per-category agreement, to locate WHERE disagreement lives rather than
+    # reporting one number that hides it
+    print("\n=== 2c. WHERE THE DISAGREEMENT LIVES (per classifier-predicted label) ===")
+    per = defaultdict(lambda: [0, 0])
+    for a, b in pairs:
+        per[a][1] += 1
+        if a == b:
+            per[a][0] += 1
+    for c in CATS:
+        if c in per:
+            hit, tot = per[c]
+            print(f"  {c:<3} {hit:>4}/{tot:<4} agree  ({hit/tot:.1%})")
+
     # ------------------------------------------------ 3. precision / FN
     print("\n=== 3. PER-CATEGORY PRECISION (classifier vs consensus) ===")
     by_pred = defaultdict(list)
@@ -183,6 +231,7 @@ def main():
         "n_judged": len(rows),
         "fleiss_kappa": fk, "fleiss_n": n_used, "fleiss_dropped": n_drop,
         "cohen_kappa": res[0] if res else None,
+        "cohen_kappa_PQ_merged": ck_m,
         "raw_agreement": res[1] if res else None,
         "chance_expected": res[2] if res else None,
         "F4_FIRED": f4_fired,
