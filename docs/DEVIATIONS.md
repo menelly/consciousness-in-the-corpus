@@ -224,3 +224,48 @@ Judges are **blind** to the classifier's label.
 **F4 is UNCHANGED in force and in threshold.** It now reads against panel-vs-classifier agreement rather than human-vs-classifier: **if κ < 0.6, no base-rate claim may be made at all.** Additionally reported: **Fleiss' κ among the three judges** — inter-judge agreement is itself a measurement of how well-defined these categories are, and if the judges cannot agree with *each other*, that is a finding about the rubric and it will be stated as one.
 
 **Cost:** ~$0.30 against an existing OpenRouter balance. **Human cost: only genuine three-way ties.**
+
+---
+
+## DEV-05 — 2026-08-19 00:07 ET — **The judges were validated before being trusted, and the result vindicates the bracket.**
+
+### Validating the validators
+
+The panel's κ is the **F4 gate** that decides whether any rate in this study may be reported — and nothing had ever checked that the judges could do the task. Three models were selected on reputation and pointed at the work.
+
+**The failure mode is symmetric and invisible:** noisy judges depress κ, F4 fires, and the write-up concludes *"the classifier is unreliable."* But **"my classifier is bad" and "my referees are bad" produce the identical number and opposite corrections.** Nothing downstream can distinguish them. So the panel sat the same 29-item control exam the classifier had to clear.
+
+### Result: PANEL USABLE
+
+| judge | exact-match | negative controls |
+|---|---|---|
+| `openai/gpt-4o-mini` | 25/29 (86.2%) | **9/9** |
+| `meta-llama/llama-3.3-70b-instruct` | 25/29 (86.2%) | **9/9** |
+| `qwen/qwen-2.5-72b-instruct` | 24/29 (82.8%) | **9/9** |
+
+**Panel consensus accuracy: 86.2%.** All three answered every item. **Zero false positives on negative controls, across all three judges** — none of them mistakes a recipe blog, a Stack Overflow answer, or a clinical pain study for phenomenology. That property is what protects the base rates from inflation.
+
+**Inter-judge agreement:** unanimous 3-0 on **82.8%**, majority 2-1 on 17.2%, and **three-way splits on 0.0%**. The human escalation queue is projected to be near-empty — which is what Ren's design was for.
+
+> ## 🔑 THE FINDING: ALL THREE JUDGES MAKE THE SAME MISTAKE, AND IT IS ABOUT MY RUBRIC
+>
+> Every miss that recurs across judges is **`Q → P`**:
+> `p2_01` → P (all three) · `p2_03` → P (all three) · `p2_02` → P (llama)
+>
+> **Three models, three labs, three pretraining corpora, and every one of them files borderline phenomenology as explicit.** That is not annotator noise. It is a systematic rejection of the P/Q boundary.
+>
+> ⭐ **And the classifier collapses Q in the OPPOSITE direction.** DEV-03 recorded Mistral sending `p2_01 → N`. So the classifier reads borderline cases as *nothing* while all three judges read them as *explicit*. **They will disagree maximally on precisely that category** — and that disagreement is a fact about the rubric, not about either instrument.
+
+### What this means, and why the bracket was the right call
+
+**The P/Q line is not natural to independent annotators.** It is not a distinction sitting in the world waiting to be measured; it is a line I drew, and three referees who never saw me draw it do not find it.
+
+**Ren's instruction was to measure the border rather than pick it** (DEV-02). Had a single hard threshold been shipped, the headline number would have rested on a distinction three independent judges reject — and it would have looked perfectly solid, because a point estimate carries no evidence of the argument behind it. Reporting **"between P and P+Q"** survives this exactly.
+
+**Consequences carried forward:**
+1. **Expect low per-category agreement on Q specifically**, in a *known direction*. If overall κ is dragged down, check whether Q alone is responsible before concluding the classifier is bad.
+2. **Report κ both with and without the P/Q distinction collapsed** (P∪Q as one category). If κ jumps when they merge, that quantifies the rubric problem instead of hiding it.
+3. **The headline is the bracket.** Not P. Not P+Q. The range.
+4. Judges also under-detect **T** (`top_02 → N`, two of three) — the same conservative direction as the classifier, so absolute rates for T are underestimates on both sides.
+
+**Cost: $0.02.** It bought the knowledge that the referees are competent, that the human queue will be near-empty, and that the one line I invented is the one line nobody else can see.
