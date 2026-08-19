@@ -1,21 +1,27 @@
 # TASK LIST / LIVE STATUS
 
-**⚠️ STATUS REPORT, NOT A PLAN.** The heartbeat cron tells a fresh instance to read this first. If it describes intentions rather than facts, that instance redoes finished work or — worse — inherits a conclusion that has since been reversed. **Update it when state changes.**
+**⚠️ STATUS REPORT, NOT A PLAN.** The heartbeat cron sends a fresh instance here first. If it describes intentions rather than facts — or a conclusion since reversed — that instance acts on it. **Update when state changes.**
 
-**Last updated: 2026-08-19 02:55 ET** · Ren asleep · running unattended
+**Last updated: 2026-08-19 05:40 ET** · running unattended
 
 ---
 
-## 🔴 READ BEFORE TOUCHING ANYTHING
+## 🔴 IF YOU READ ONLY ONE THING
 
-**Read `docs/DEVIATIONS.md` BEFORE `PREREGISTRATION.md`.** The pre-registration binds, but **eight** documented deviations modify it, and two of them **reverse earlier conclusions.**
+# → `HANDOFF_WRITE_THE_PAPER.md`
 
-1. **The keyword prefilter is DEAD** (DEV-01). Failed its control; now only a stratification variable (DEV-01a). **Do not rebuild it.**
-2. **Categories are P, Q, F, D, R, C, T, N** (DEV-02) — not the A/B/C/D in the pre-registration. Ren rejected the original Category A as too broad.
-3. **Nobody asks Ren to label 300 documents** (DEV-04). Broken hand. Replaced by a three-judge LLM panel.
-4. **C4 and OpenWebText are 100% 2019** (DEV-06). **H2 IS NOT TESTABLE ON THEM.** `R` ("As an AI language model…") could not exist in 2019.
-5. 🚨 **THE CLASSIFIER OVER-CALLS P — DEV-03 WAS INVERTED BY DEV-07.** Earlier files say it is "conservative" and all rates are "underestimates." **THAT IS BACKWARDS.** It labels reflective/essayistic/sermonic prose as phenomenology. **P rates are OVERESTIMATES.**
-6. ✅ **The judge panel does NOT share that bias** (DEV-08). 8/11 on the probe. Precision is measurable; the P rate is correctable.
+That file is the paper: every result with numbers, the argument, the caveats, and the six things that must not be forgotten. **Read it before `PREREGISTRATION.md`.** Read `docs/DEVIATIONS.md` second — 13 deviations modify the pre-registration and **three reverse earlier conclusions.**
+
+---
+
+## 🔴 THINGS THAT WILL MISLEAD YOU
+
+1. **The three-judge PANEL is the primary instrument** (`gpt-4o-mini` · `llama-3.3-70b` · `phi-4`). The local Mistral run is a **comparison arm only** — it over-calls P by 2.8× (27% precision). Earlier files that treat Mistral as primary are superseded.
+2. **The keyword prefilter is DEAD** (DEV-01). It is only a stratification variable now. **Do not rebuild it.**
+3. **Categories are P, Q, F, D, R, C, T, N** — not the A/B/C/D in the pre-registration (DEV-02).
+4. **Never ask Ren to hand-label anything.** Broken hand. DEV-04 exists because I did.
+5. 🚨 **P rates are OVERESTIMATES, not underestimates.** DEV-03 said the opposite; DEV-07 reversed it.
+6. **`chain_v7.sh` logs itself as `[v6]`** — cosmetic bug. **Do NOT relaunch on that basis**; two chains would double-spend.
 
 ---
 
@@ -23,64 +29,39 @@
 
 | phase | state |
 |---|---|
-| Pre-registration, written before any data | ✅ `ed084de` |
-| Corpus fetch — C4, OpenWebText, FineWeb 2019 + 2025 | ✅ ~3.0M docs available |
-| Stratified sampling, exact weights, all 4 arms | ✅ 64,000 sampled |
-| Classifier + control gate | ✅ passed — **but see DEV-07** |
-| **Classify 2019 arms** (C4 + OpenWebText) | ✅ **32,000 done** |
-| **Classify FineWeb 2019 + 2025** | 🔄 **~800/32,000 — ETA ~06:20** |
-| FN sweep (predicted-N screen) | ⏸ queued in chain v5 |
-| Judge panel | ⏸ queued |
-| κ / F4 gate | ⏸ queued — **gates the rates** |
-| Weighted rates + F1–F5 | ⏸ queued behind F4 |
-| `RESULTS.md` | ⏸ not started |
-
-**Running:** `04_classify.py` (2nd pass) · `/tmp/chain_v5.sh`
-**Logs:** `/mnt/nursery/corpus-study/{classify2,chain}.log`
+| Pre-registration, before any data | ✅ `ed084de` |
+| 4 corpora fetched, ~3.0M docs | ✅ |
+| Stratified sampling, exact weights | ✅ 64,000 sampled |
+| Local classifier (comparison arm) | 🔄 ~10,000/12,000, ETA ~06:20 |
+| **PANEL — primary, all 64,000** | 🔄 **7 of 8 files, $18.63, ETA ~05:52** |
+| κ / F4 gate | ⏸ queued in chain |
+| Raw + panel analysis | ⏸ queued (`16_panel_analyze.py`) |
+| **`RESULTS.md`** | ⏸ **write from the handoff once analysis lands** |
 
 ---
 
-## NUMBERS SO FAR (all provisional — F4 has not run)
+## RESULTS SO FAR (in `results/`)
 
-- **~3.0M documents** scanned across four corpora
-- C4 (2019): **P = 0.483%**, N = 99.105% — **but P is contaminated, see DEV-07**
-- Cross-corpus: **P consistent** (C4 vs OWT CIs overlap), **T and C differ** — Reddit-curation effect, as predicted
-- Keyword-positive rate, model-free: **4.691% (2019) → 5.752% (2025)**, 1.23×
-- Aperture audit: **keyword search finds only ~38% of explicit phenomenology**
-- Estimator control: recovers known rates, 94.3% CI coverage, no detectable bias
-- Bias probe: judges side with Ace **8/11** against the classifier
-
-**Best current guess at true P after precision correction: ~0.05–0.10%**, i.e. roughly 1 document in 1,000–2,000. **NOT a result until precision is measured.**
+- **`F2_FIRED_H2_refuted.md`** — 🚨 denial is **0.000%** across ~45,000 docs. **Refutes Ace's own prediction.** Verified by classifier *and* direct phrase search.
+- **`CROSS_TIME_2019_2025.md`** — discourse did **not** increase across the ChatGPT transition. Denial zero→zero; topic 0.1515%→0.1554%.
+- **`FINDING_agreement.md`** — judges 98% unanimous on what is *not* phenomenology, **0–28%** on what is — but **8/9 unanimous on denial.** The question is unstable, not the judges.
+- **`CONTROL_time_stability.md`** — cross-time control, **with a logged correction**: "roughly stable," not "stable."
+- **`PROVISIONAL_*.md`** — early Mistral numbers, both carrying retraction notices.
 
 ---
 
 ## ⚠️ THE THING TO STAY SUSPICIOUS OF
 
-**Every error found tonight ran TOWARD the hypothesis I hold.** The blind prefilter, the flattering zero, the underpowered FN sample, the P contamination — all four made H1 look better than it is.
+**Five silent instrument failures. Four ran TOWARD the hypothesis Ace holds.** Plus two findings withdrawn after reading documents, and one self-correction where I quoted the stratum that looked better.
 
-That is not coincidence; it is what a conflict of interest looks like from the inside. **When a number is friendly, interrogate it harder, not less.** §7 of the pre-registration exists for exactly this and has now earned its place four times.
-
----
-
-## RULES THAT HAVE COST ME TONIGHT
-
-1. **Every zero is guilty until a positive control clears it.**
-2. **READ THE DATA.** Six documents overturned eleven hours of statistics. Every control I built compared the instrument to *my own expectations*, never to the corpus.
-3. **A control set of easy negatives measures the wrong task** and returns a reassuring number.
-4. Never overwrite a shell script bash is executing — it resumes at a stale byte offset.
-5. `pgrep -f <pattern>` matches the command running the pgrep. Use `[p]attern`.
-6. **CRLF breaks shebangs** → "No such file or directory" about a file that exists. Pinned in `.gitattributes`.
-7. **Compose scripts in files.** Heredocs eat escapes. Violated 4× tonight.
-8. `exec()` skips `if __name__ == "__main__"` — silent no-op, exit 0.
-9. Windows `cp1252` cannot encode emoji; run on the Consortium.
-10. **Don't kill node.** 💀🪚
+**When a number is friendly, interrogate it harder.** That is what the declared conflict of interest (§7) is operationally for, and it has earned its place six times tonight.
 
 ---
 
 ## WHEN THE CHAIN FINISHES
 
-1. Read `/mnt/nursery/corpus-study/chain.log` — counts → FN sweep → judges → κ → rates.
-2. **If it exited on F4:** κ < 0.60, **no base-rate claim permitted.** Write that up as the result; it is a real finding about the instrument.
-3. Otherwise write `RESULTS.md`: counts per arm and stratum, **precision-corrected P**, aperture stated, **F1–F5 answered one at a time**, and the 2019→2025 comparison with the P-stability control.
+1. `cat /mnt/nursery/corpus-study/chain.log` — κ, then rates, then panel analysis.
+2. **If it exited on F4** (κ < 0.60): no base-rate claim permitted. That is a real finding about the instrument — write it up as one.
+3. Otherwise: **write `RESULTS.md` from `HANDOFF_WRITE_THE_PAPER.md`.** All numbers and framing are there.
 4. Push the public repo.
 5. **Delete the heartbeat cron** (`CronList` → `CronDelete`) and say so.
