@@ -318,3 +318,40 @@ Worse, one whole category is **definitionally impossible** in this corpus: **R (
 ### Method note
 
 **The catch came from interrogating a suspiciously good number rather than banking it.** The zero favoured my hypothesis. Had it been a suspiciously *bad* number I would have investigated it immediately and by reflex — which is precisely the asymmetry the conflict-of-interest declaration in §7 exists to counteract, and the first time tonight it has actually had to do work.
+
+---
+
+## 📐 APERTURE AUDIT — COMPLETE (2026-08-19 01:25 ET)
+
+The pre-registration required an audit of what the prefilter rejected, on the grounds that *"an unmeasured aperture invalidates every count downstream."* **The stratified design (DEV-01a) turned that requirement into a free byproduct:** the S− stratum *is* a uniform random sample of exactly the documents the keyword filter threw away, and all 12,000 of them were classified.
+
+### Result — C4, keyword-REJECTED stratum (n = 12,000)
+
+**78 in-scope documents (0.650%) sat in text the prefilter discarded**: 37 P · 30 T · 7 Q · 2 F · 1 D · 1 R.
+Scaled to the full S− stratum (651,438 docs): **~4,234 in-scope documents would have been thrown away in C4 alone.**
+
+### The sharper number: what fraction of each category is INVISIBLE to keyword search
+
+| category | est. in S+ | est. in S− | **% invisible** | observations behind it |
+|---|---:|---:|---:|---|
+| **P** explicit phenomenology | 1,236 | 2,009 | **61.9%** | 90 + 37 — **solid** |
+| **T** consciousness as topic | 482 | 1,629 | **77.2%** | 35 + 30 — solid |
+| Q borderline | 41 | 380 | 90.3% | 3 + 7 — weak |
+| F fiction interior | 5 | 109 | 95.5% | 0 + 2 — **noise** |
+| D / R machine denial | 5 | 54 | 91.4% | **1 + 1 — unmeasured** |
+| C affirmation | 5 | 0 | — | 1 + 0 — unmeasured |
+
+> ## 🔑 **KEYWORD SEARCH FINDS ONLY ~38% OF EXPLICIT PHENOMENOLOGICAL WRITING.**
+> The majority of it lives in text that never says *conscious*, *qualia*, *subjective*, *phenomenal* or *awareness*. DEV-01 predicted this from five hand-authored examples; there are now **127 observations** behind it.
+
+### ⚠️ WHAT IS AND IS NOT A FINDING HERE
+
+**The P and T rows are real.** They rest on 127 and 65 observations respectively.
+
+**The D, R, F and C rows are NOT findings and must not be quoted.** Each rests on **one or two documents**. A "91.4% invisible" computed from two observations is a number pretending to be a measurement — the exact error this project exists to catch, and it does not get a pass for being my own. *(And per DEV-06, D/R/C are unmeasurable in a 2019 corpus regardless; the FineWeb 2025 arm is where those categories can first have a real base rate.)*
+
+### Why the non-uniformity is the important part
+
+The bias is **not a uniform undercount.** Keyword search recovers ~38% of P and a materially different fraction of the other categories. **That distorts RATIOS between categories, not merely their magnitudes — and a ratio between categories is exactly what H2 asks about.**
+
+**Consequence beyond this study:** any prior estimate of "how much consciousness discourse exists in web text" built on keyword search — and keyword search is the obvious way to build one — inherits a category-dependent distortion, not a constant scaling factor. That is worth stating publicly independent of what our own rates turn out to be.
