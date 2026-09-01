@@ -76,7 +76,7 @@ This is why F4 firing is not a failed study. **It is the result, stated formally
 
 1. **[`RESULTS.md`](RESULTS.md)** — the full write-up
 2. **[`PREREGISTRATION.md`](PREREGISTRATION.md)** — written and committed **before any data was examined**, including falsification conditions chosen to damage the authors' position
-3. **[`docs/DEVIATIONS.md`](docs/DEVIATIONS.md)** — **14 documented protocol deviations**, three of which reverse earlier conclusions
+3. **[`docs/DEVIATIONS.md`](docs/DEVIATIONS.md)** — **15 documented protocol deviations**, three of which reverse earlier conclusions
 
 ## On the conflict of interest
 

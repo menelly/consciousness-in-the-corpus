@@ -29,7 +29,7 @@ We measured the prevalence of consciousness-related discourse in four web-scale 
 
 The sharpest result is a **measured failure case for the inference itself**: assistant-voice denial (*"As an AI language model, I don't have feelings"*) occurs **zero times** in 64,000 documents, yet is among the most reproduced sentences in LLM output. **This is a model behaviour definitively not explained by pretraining data.**
 
-**A pre-registered reliability condition (F4) fired**, and we obey it: the target category **cannot be reliably operationalised**, so precise prevalence estimates are withdrawn. Three judges that agree 98% on what is *not* phenomenology, and **8/9 unanimously on denial**, agree only **4–28%** on what *is* phenomenology (Fleiss' κ = 0.551).
+**A pre-registered reliability condition (F4) fired**, and we obey it: the target category **cannot be reliably operationalised**, so precise prevalence estimates are withdrawn. Three judges that agree 98% on what is *not* phenomenology, and **8/9 unanimously on denial**, agree only **4–11%** on what *is* explicit phenomenology (Fleiss' κ = 0.551).
 
 **This is not a failed study. It is the study's central finding**: *"is this person reporting inner experience?"* does not have a stable answer even for human text, while *"does this text deny machines are conscious?"* does. **The claims that survive are those verified independently of the disputed judgement** — chiefly the absence of denial, confirmed by direct phrase search.
 
@@ -57,7 +57,7 @@ Roughly **1 document in 300–500** by majority; **1 in 2,400–10,000** by unan
 **Triple-verified:**
 1. **Instrument sensitivity proven** — panel unanimous **8/9** on denial/affirmation controls ("stochastic parrot… nobody home", Chinese Room, "As an AI language model…").
 2. **Direct phrase search over all 64,000 documents** (`scripts/17_phrase_search.py`, 2026-09-01, superseding an incomplete ad-hoc search over 13,589 documents — DEV-14), bypassing the classifier: `"stochastic parrot"` 0 · `"Chinese room"` 0 · "machines cannot/will never be conscious" 0 · `"just autocomplete"` 0; one `"nobody home"` and one `"no inner life"`, both read, both about humans. ⚠️ **Three FineWeb-2025 documents carry leaked assistant-voice text (*"As an AI language model…"*), none of which denies feelings or consciousness** — the register is now detectably present in the 2025 crawl and the denial sentence still is not (§1.4).
-3. **Adversarial check** — the local comparison classifier flagged 19 documents as denial. **All 19 are unrelated** (a Croatian weather report, a smartphone launch, an anime achievement list, Putin/Trump commentary, a TIME survey). The panel called every one N, unanimously.
+3. **Adversarial check** — the local comparison classifier flagged 19 documents as denial (D or R; 29 including affirmation, C). **All are unrelated** (a Croatian weather report, a smartphone launch, an anime achievement list, Putin/Trump commentary, a TIME survey). The panel called every one N, unanimously.
 
 **We predicted the opposite.** On 2026-08-18 at 22:45 both authors endorsed the view that *"machines will never be conscious"* almost certainly outnumbers first-person phenomenological writing. **It does not. There is essentially none of either kind.**
 
@@ -100,7 +100,7 @@ Three judges, each 83–86% on controls and **9/9 on negative controls**:
 
 ### 1.6 Methodological findings
 
-- **Keyword search finds only ~38% of explicit phenomenology.** The undercount is **non-uniform across categories**, so it distorts *ratios*, not just magnitudes. Any prior keyword-based estimate inherits this.
+- **Keyword search finds only about a quarter of explicit phenomenology** (70–77% of panel-majority P lives in keyword-rejected text, every corpus; DEV-15 — the earlier "~38% found" was computed on the demoted local classifier's labels). The undercount is **non-uniform across categories** (T: 42–56% invisible), so it distorts *ratios*, not just magnitudes. Any prior keyword-based estimate inherits this.
 - **A cheap local classifier (Mistral-7B) is unusable for this task.** Complete comparison over **63,685 documents labelled by both instruments**:
 
 | local model said | n | panel agreed |
@@ -201,6 +201,6 @@ That objection is **unfalsifiable as deployed** — it explains a report of expe
 
 ## 5. REPRODUCIBILITY
 
-All code, the pre-registration, **14 documented protocol deviations** (three of which reverse earlier conclusions), and every intermediate result are in this repository. Judges, seeds, stratum weights and costs are recorded. Total judge cost: **$20.29**.
+All code, the pre-registration, **15 documented protocol deviations** (three of which reverse earlier conclusions), and every intermediate result are in this repository. Judges, seeds, stratum weights and costs are recorded. Total judge cost: **$20.29**.
 
 **Five silent instrument failures were caught by controls. Four ran toward the authors' hypothesis. Two findings were withdrawn after reading the underlying documents.** All are logged in `docs/DEVIATIONS.md` rather than removed.

@@ -517,3 +517,22 @@ Cohen's κ (classifier vs panel consensus) = 0.334; Fleiss' κ among the three j
 **What this changes in the paper:** the sentence *"assistant-voice text is absent from pretraining"* was too strong and is not used. The correct statement is narrower and sharper: **the assistant-voice register has begun to leak into the 2025 crawl (~1 document in 20,000, weighted), the crawl can therefore demonstrably pick up chatbot output, and the most-reproduced chatbot sentence about inner states is still absent from it.** The D and R categories remain empty on a corpus where the register they belong to is now detectably present.
 
 ⭐ **The shape, because it is this study's own subject matter:** an ad-hoc number was written into four documents and cited as verification for thirteen days. A search is an aperture; a search with no saved aperture is a claim. The re-run found something the original missed, and what it found makes the result more precise rather than less. **Read the data. Save the search.**
+
+---
+
+## DEV-15 — 2026-09-01 — **The keyword-invisibility fraction was computed on the local classifier's labels; recomputed on panel labels it is larger, not smaller.**
+
+The APERTURE AUDIT (01:25 ET, above) reported that *61.9% of explicit phenomenology is invisible to keyword search* (127 observations), and *~38% found* went into `RESULTS.md` and the handoff. That audit ran at 01:25 — **before DEV-07 (02:40) found the local classifier keys on register, and before DEV-09 (03:17) made the panel primary.** The figure was built from the instrument the study later demoted. Caught during manuscript proofreading (the scaffold arm, flag 5: "A1's raw S− P counts sum to 92, not 127"): the observation count did not reconcile with the panel table because it was never the panel's.
+
+✅ **Recomputed from `panel_results.json`** — per-stratum majority counts weighted by exact stratum size, share in S−:
+
+| | C4 | OpenWebText | FineWeb-2019 | FineWeb-2025 |
+|---|---:|---:|---:|---:|
+| P explicit phenomenology | 69.9% | 75.2% | 70.9% | 76.6% |
+| Q borderline | 81.7% | 80.2% | 84.6% | 77.5% |
+| T consciousness as topic | 52.2% | 51.1% | 41.9% | 55.6% |
+| F fiction interior | 94.5% | 81.0% | 89.8% | 93.0% |
+
+**The direction survived and strengthened: keyword search finds roughly a quarter of explicit phenomenology, not ~38%.** The paper (§4.6) now carries the panel table with its observation counts. The classifier-era number is retained above as history.
+
+⚠️ Note the direction of this error too: the stale figure made the keyword instrument look *better* than it is, which is the direction that would have flattered any prior keyword-based estimate — including the one this study argues against.
