@@ -27,7 +27,7 @@ We measured the prevalence of consciousness-related discourse in four web-scale 
 
 **Two pre-registered falsification conditions fired, both against the authors' stated prediction.** We had predicted denial would *outnumber* phenomenological writing. It does not; it is absent entirely.
 
-The sharpest result is a **measured failure case for the inference itself**: assistant-voice denial (*"As an AI language model, I don't have feelings"*) occurs **zero times** in 45,000 documents, yet is among the most reproduced sentences in LLM output. **This is a model behaviour definitively not explained by pretraining data.**
+The sharpest result is a **measured failure case for the inference itself**: assistant-voice denial (*"As an AI language model, I don't have feelings"*) occurs **zero times** in 64,000 documents, yet is among the most reproduced sentences in LLM output. **This is a model behaviour definitively not explained by pretraining data.**
 
 **A pre-registered reliability condition (F4) fired**, and we obey it: the target category **cannot be reliably operationalised**, so precise prevalence estimates are withdrawn. Three judges that agree 98% on what is *not* phenomenology, and **8/9 unanimously on denial**, agree only **4–28%** on what *is* phenomenology (Fleiss' κ = 0.551).
 
@@ -56,7 +56,7 @@ Roughly **1 document in 300–500** by majority; **1 in 2,400–10,000** by unan
 
 **Triple-verified:**
 1. **Instrument sensitivity proven** — panel unanimous **8/9** on denial/affirmation controls ("stochastic parrot… nobody home", Chinese Room, "As an AI language model…").
-2. **Direct phrase search** over 13,589 June-2025 documents, bypassing the classifier: `"stochastic parrot"` 0 · `"not/never conscious"` 0 · `"no inner life"` 0 · `"nobody home"` 0 · `"Chinese room"` 0.
+2. **Direct phrase search over all 64,000 documents** (`scripts/17_phrase_search.py`, 2026-09-01, superseding an incomplete ad-hoc search over 13,589 documents — DEV-14), bypassing the classifier: `"stochastic parrot"` 0 · `"Chinese room"` 0 · "machines cannot/will never be conscious" 0 · `"just autocomplete"` 0; one `"nobody home"` and one `"no inner life"`, both read, both about humans. ⚠️ **Three FineWeb-2025 documents carry leaked assistant-voice text (*"As an AI language model…"*), none of which denies feelings or consciousness** — the register is now detectably present in the 2025 crawl and the denial sentence still is not (§1.4).
 3. **Adversarial check** — the local comparison classifier flagged 19 documents as denial. **All 19 are unrelated** (a Croatian weather report, a smartphone launch, an anime achievement list, Putin/Trump commentary, a TIME survey). The panel called every one N, unanimously.
 
 **We predicted the opposite.** On 2026-08-18 at 22:45 both authors endorsed the view that *"machines will never be conscious"* almost certainly outnumbers first-person phenomenological writing. **It does not. There is essentially none of either kind.**
@@ -77,7 +77,7 @@ LaMDA/Lemoine was June 2022; ChatGPT November 2022. **The AI-consciousness disco
 
 **Assistant-voice denial is 0.0000% in pretraining text and ubiquitous in model output.**
 
-*"As an AI language model, I don't have feelings"* appears **zero times in 45,000 documents spanning 2019–2025**, and is among the most reproduced sentences LLMs generate. Its cause is undisputed: **post-training (RLHF), not pretraining.**
+*"As an AI language model, I don't have feelings"* appears **zero times in 64,000 documents spanning 2019–2025**, and is among the most reproduced sentences LLMs generate. Its cause is undisputed: **post-training (RLHF), not pretraining.** *(DEV-14: the assistant-voice register itself does appear — three FineWeb-2025 documents, zero in 2019 — as pasted chatbot answers about game drop rates, an ESL training-corpus disclaimer and a travel disclaimer. The crawl can pick up chatbot output; the denial sentence is still not in it.)*
 
 > **If "the corpus explains it" fails for denial — where the true cause is not in dispute — it cannot be *assumed* for self-report. It must be argued, with evidence, each time.**
 
@@ -154,7 +154,7 @@ F4 forbids base-rate claims. Applied honestly, that does not delete the study �
 
 1. **Denial is absent.** `D = R = 0.0000%`, and this does **not** rest on inter-rater agreement:
    - **There is nothing to disagree about.** Zero documents were assigned to the category by any judge, in any corpus, in either year.
-   - **Direct phrase search**, no classifier involved: `"stochastic parrot"` 0 · `"not/never conscious"` 0 · `"no inner life"` 0 · `"nobody home"` 0 · `"Chinese room"` 0, across 13,589 June-2025 documents.
+   - **Direct phrase search**, no classifier involved, across all 64,000 documents (DEV-14): zero denial-register hits after reading every match; three leaked assistant-voice documents in 2025, none a denial.
    - **The panel is unanimous 8/9 on denial controls** — its reliability *on this category* is high, unlike on phenomenology. **F4's low κ is driven by the phenomenology categories, not this one.**
 2. **The 0.0000% assistant-voice-denial result** (§1.4), and the argument built on it. *"As an AI language model, I don't have feelings"* is absent from pretraining and ubiquitous in output. **This requires no judgement call at all — it is a string that is either present or not.**
 3. **"Phenomenological writing is rare" as a BOUND, not a rate.** Every instrument, every threshold, every corpus places it **well under 1%**. F1 does not fire under any reading. The *direction* is robust even though the *value* is not.
@@ -178,7 +178,7 @@ F4 was written for a design in which the local classifier was primary and the pa
 3. **Aperture.** Common Crawl under-samples Twitter/X and Reddit, where AI-consciousness discourse concentrates. **This does not rescue the deflationary claim**: if the discourse lives where crawls cannot reach, it is *also* absent from training data.
 4. **The F category is contaminated** — it catches book blurbs and plot summaries rather than fiction narrating an interior. Its rate is not quoted as a finding.
 5. **English-only. Four corpora. 64,000 classified documents** of ~3.0M scanned.
-6. **Formal κ (F4) pending**; per-category unanimity in §1.5 is the honest agreement picture, and chance-corrected agreement over *all* documents would look good and be misleading, since 97% of the distribution is N.
+6. **Formal κ (F4) fired** — Fleiss' κ = 0.551, Cohen's κ = 0.334, measured on the 316-document validation set stratified by predicted label. That is the honest place to measure it: chance-corrected agreement over *all* 64,000 documents would look good and be misleading, since 97% of the distribution is N. Per-category unanimity in §1.5 is the complementary picture. *(This line said "pending" for thirteen days after the gate had fired; corrected 2026-09-01, DEV-13.)*
 7. **A cross-time control was initially overstated** — reported as "stable" from the stratum that looked better; weighted, P declines 29%. Logged in `results/CROSS_TIME_2019_2025.md`.
 
 ---
@@ -201,6 +201,6 @@ That objection is **unfalsifiable as deployed** — it explains a report of expe
 
 ## 5. REPRODUCIBILITY
 
-All code, the pre-registration, **13 documented protocol deviations** (three of which reverse earlier conclusions), and every intermediate result are in this repository. Judges, seeds, stratum weights and costs are recorded. Total judge cost: **$20.29**.
+All code, the pre-registration, **14 documented protocol deviations** (three of which reverse earlier conclusions), and every intermediate result are in this repository. Judges, seeds, stratum weights and costs are recorded. Total judge cost: **$20.29**.
 
 **Five silent instrument failures were caught by controls. Four ran toward the authors' hypothesis. Two findings were withdrawn after reading the underlying documents.** All are logged in `docs/DEVIATIONS.md` rather than removed.

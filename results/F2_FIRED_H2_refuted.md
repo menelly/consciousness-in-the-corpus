@@ -21,7 +21,7 @@ Panel labels (`gpt-4o-mini` · `llama-3.3-70b` · `phi-4`), ~45,000 documents ac
 ## The zero is verified two independent ways
 
 1. **Instrument sensitivity proven.** The panel is unanimous 8/9 on denial/affirmation controls — "stochastic parrot… nobody home", the Chinese Room, "As an AI language model, I don't have feelings", both affirmations (`FINDING_agreement.md`).
-2. **Direct phrase search over 13,589 June-2025 documents**, bypassing the classifier entirely:
+2. **Direct phrase search** — originally an ad-hoc run over 13,589 June-2025 documents; re-run 2026-09-01 as `scripts/17_phrase_search.py` over all 64,000 documents (DEV-14: zero denial-register hits after reading; three leaked assistant-voice documents in 2025, none a denial). Original table:
 
 | phrase | hits |
 |---|---:|

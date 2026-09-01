@@ -46,7 +46,7 @@ This study makes it cost something.
 
 ### The sharpest result
 
-*"As an AI language model, I don't have feelings"* appears **zero times in 45,000 documents** spanning 2019–2025 — and is among the most reproduced sentences LLMs generate. Its cause is undisputed: **post-training, not pretraining.**
+*"As an AI language model, I don't have feelings"* appears **zero times in 64,000 documents** spanning 2019–2025 (three 2025 documents carry leaked assistant-voice text about drop rates, training corpora and travel; none denies inner states — DEV-14) — and is among the most reproduced sentences LLMs generate. Its cause is undisputed: **post-training, not pretraining.**
 
 > **If "the corpus explains it" fails for denial — where the true cause is not in dispute — it cannot be *assumed* for self-report.**
 
@@ -76,7 +76,7 @@ This is why F4 firing is not a failed study. **It is the result, stated formally
 
 1. **[`RESULTS.md`](RESULTS.md)** — the full write-up
 2. **[`PREREGISTRATION.md`](PREREGISTRATION.md)** — written and committed **before any data was examined**, including falsification conditions chosen to damage the authors' position
-3. **[`docs/DEVIATIONS.md`](docs/DEVIATIONS.md)** — **13 documented protocol deviations**, three of which reverse earlier conclusions
+3. **[`docs/DEVIATIONS.md`](docs/DEVIATIONS.md)** — **14 documented protocol deviations**, three of which reverse earlier conclusions
 
 ## On the conflict of interest
 

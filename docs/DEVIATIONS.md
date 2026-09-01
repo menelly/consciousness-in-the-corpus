@@ -453,3 +453,67 @@ Correctly called **N** by consensus: August Wilson literary criticism · Micah 6
 - The judge panel's per-category **precision on P** is now the load-bearing measurement and it is trustworthy.
 - Expect measured P precision to be **low** (11 hand-read documents suggest 10–20%), which would put the true P rate nearer **0.05–0.10%** than 0.483%.
 - **That correction runs TOWARD the hypothesis I hold** (rarer phenomenology → H1 more strongly supported). It must therefore be stated with the direction explicit, every time it is reported.
+
+---
+
+> ### 📌 DEV-09 through DEV-14 were logged on 2026-09-01, during manuscript preparation.
+> Each records a decision that was made and documented at the time — in a script docstring, a commit message, or `RESULTS.md` — but never entered *here*, in the file the pre-registration names as the deviation log. `README.md` and the handoff both said "13 documented deviations" while this file held ten entries. The decisions were real and dated; the *log* was incomplete. The timestamps below are the decision times, taken from the commits and scripts; the logging date is today. A deviation documented anywhere but the deviation log is a deviation the next reader will not find.
+
+---
+
+## DEV-09 — 2026-08-19 03:17 ET — **The judge panel became the PRIMARY instrument; the local classifier was demoted to a comparison arm.** *(logged 2026-09-01; source: `scripts/15_panel_classify.py` docstring)*
+
+DEV-07 found the Mistral-7B classifier labels reflective/essayistic/sermonic prose as phenomenology — of 11 hand-read P documents at most 1–2 were real. DEV-08 showed the judges catch that error 8/11. **Ren's call, 03:17: a contaminated rate is wrong no matter how many documents support it, and tightening a confidence interval around a wrong number is the worst outcome available — it looks like rigour.** So the three-judge panel, originally the validator, labels **every** document, and the Mistral run is retained only to measure how badly a cheap local classifier distorts the task.
+
+**Scope, revised 03:30 at Ren's insistence:** an earlier version would have panel-classified only S+ and left S− to a single cheap screen, on the logic that S− is 95% of the corpus by weight and nearly empty of positives. Ren: *"How do you know which ones will count if you don't run them? I would rather do them all now and be accurate than discover that we picked wrong and be inaccurate."* The aperture audit had already proven the objection: the keyword filter finds ~38% of phenomenology, so most of it lives in S−. **All 64,000 documents, both strata, all four arms, full panel.** Cost ceiling enforced in code ($32.00); actual spend $20.29.
+
+**Effect on the falsification conditions:** F4 was written against "classifier vs human/panel" agreement. With the panel primary, the Cohen's κ it names now compares the primary instrument to a known-bad one. This is the escape argument `RESULTS.md` §2.1 records and declines to use, because the panel's own Fleiss' κ is also below threshold.
+
+---
+
+## DEV-10 — 2026-08-19 03:30 ET — **`qwen/qwen-2.5-72b-instruct` replaced by `microsoft/phi-4` on the panel, before the full-corpus run.** *(logged 2026-09-01; source: `scripts/15_panel_classify.py`; validation added `scripts/06c_validate_phi4.py`)*
+
+Two reasons at the time. **Cost:** qwen alone would have been $29.95 of a $50.75 full-corpus run; phi-4 is $5.82, bringing the run to ~$26.62. **Bias direction:** phi-4's control-set misses were said to run P→Q, the *opposite* of the other judges' Q→P (DEV-05), so it counteracts a shared panel bias rather than reinforcing it.
+
+🚨 **That second claim lived in a script comment and nowhere else.** `validation/judge_validation.json` recorded gpt-4o-mini, llama-3.3-70b and qwen — the three judges that sat the exam — and had no phi-4 entry. A judge whose votes carry a third of every rate in the study had no control-set result on the record.
+
+✅ **Validated 2026-09-01 on the same 29 items, same rubric:** 24/29 (82.8%), 9/9 negative controls, zero false positives. Misses: `p1_03` P→Q, `p1_04` P→Q, `fic_01` F→Q, `fic_02` F→Q, `top_02` T→N. **The comment was right about the direction** — phi-4 files explicit phenomenology as borderline and never the reverse, and is the only judge with zero Q→P misses. Result appended to `judge_validation.json` under `per_judge_added_later`, leaving the original three-judge record untouched.
+
+---
+
+## DEV-11 — 2026-08-19 ~00:45 ET — **The Pile and RedPajama were replaced by FineWeb 2019 and FineWeb 2025.** *(logged 2026-09-01; source: DEV-06 consequences, `scripts/10_fetch_fineweb.py`)*
+
+The pre-registration §3 named C4, OpenWebText, The Pile subsets and RedPajama samples. DEV-06 established that C4 and OpenWebText both predate the phenomenon under study (April 2019), so H2 was untestable on them and a post-2022 corpus was required. Rather than add two more heterogeneous corpora of mixed and partly unknown date composition, the design substituted **two crawls from the same FineWeb pipeline** — `CC-MAIN-2019-18` and `CC-MAIN-2025-26` — so that the cross-time comparison varies only the crawl year. That is a stronger test of "did the discourse change?" than The Pile and RedPajama could have given, and it is why the paper can say the discourse did not measurably change across the ChatGPT transition. The Pile and RedPajama were never fetched.
+
+---
+
+## DEV-12 — 2026-08-19 ~05:00 ET — **F3 fired on a division-by-zero failure mode of its own definition.** *(logged 2026-09-01; source: `RESULTS.md` §2)*
+
+F3 was written as *affirmation > 2 × denial, and affirmation > 0*, and was the condition chosen to damage the LLM author's position. Denial is exactly zero, so any nonzero affirmation trivially satisfies it. It fired on FineWeb-2025 on **three documents in 16,000** (0.0107%; interval includes zero). Reported as fired, per the pre-registration; reported as substantively empty, per honesty. **We wrote a condition that could not distinguish "affirmation dominates denial" from "both are absent," and did not notice until it fired.**
+
+---
+
+## DEV-13 — 2026-08-19 06:34 ET — **F4 fired and was obeyed: point estimates for phenomenological writing are withdrawn.** *(logged 2026-09-01; source: commit `a82b942`, `RESULTS.md` §2.1)*
+
+Cohen's κ (classifier vs panel consensus) = 0.334; Fleiss' κ among the three judges = 0.551 (n = 315 of 316 validation documents; one dropped for an invalid vote). Both under 0.60. Per §2: *no base-rate claim may be made at all.*
+
+**The available escape argument is recorded and not used.** DEV-09 changed which instrument the Cohen's κ compares, so a low value there is expected rather than disqualifying. But the panel's own inter-rater κ is also below threshold, and that is what the condition was really about. Withdrawn: precise P/Q/F/T prevalence; the P/Q distinction as a measured quantity; any claim about change in phenomenological writing 2019→2025. Survives: denial absence (zero documents to disagree about; 8/9 unanimity on denial controls; classifier-free phrase search); the assistant-voice result; "rare" as a bound; the operationalisation finding, which F4 firing *is*; and the instrument comparison. **The author with the conflict of interest is the one who benefits if the rates stand.**
+
+*(Note also that `RESULTS.md` limitation 6 said "formal κ pending" for thirteen days after F4 had fired — corrected 2026-09-01.)*
+
+---
+
+## DEV-14 — 2026-09-01 — **The classifier-free phrase search cited in `RESULTS.md` was an incomplete ad-hoc run. Re-run over all 64,000 documents as a script; three assistant-voice documents found, none a denial.**
+
+`RESULTS.md`, `README.md`, the handoff and `results/F2_FIRED_H2_refuted.md` all cited *"a direct phrase search over 13,589 June-2025 documents"* as the second, classifier-independent verification of the zero. **No script produced that number.** It was run interactively on 2026-08-19 and never saved; the FineWeb-2025 sample holds 16,000 documents, so 13,589 was a subset of unknown composition. A number the paper leans on has to be reproducible from the repository.
+
+✅ **`scripts/17_phrase_search.py`** re-runs it over **every sample file — 64,000 documents, 175M characters** — on both the full stored text and the 3,500-character judge window, printing every hit with context. Output: `validation/phrase_search.json`.
+
+**Result, after reading every hit:**
+- **Denial register: 0 of 64,000.** `stochastic parrot` 0 · `Chinese room` 0 · "machines cannot/will never be conscious" 0 · `just autocomplete` 0. The single `nobody home` (FineWeb-2019) is a teenager playing records in an empty house; the single `no inner life` (OpenWebText) is a columnist on an Indian prime minister.
+- 🚨 **Assistant-voice register: 3 documents, all FineWeb-2025, 0 in 2019.** *"As an AI language model, I don't have access to specific drop rates…"* (a games forum, pasted chatbot output) · *"as an AI language model, I have been trained on a vast corpus…"* (an ESL page) · *"As an AI language model, I strive to provide unbiased responses…"* (a travel page). **None denies feelings, consciousness or experience.** The panel labelled all three N (one judge voted R on the drop-rates document and was outvoted; it is an information-access disclaimer, not a statement about inner states). The one `I don't have feelings/emotions` hit is a human racing driver.
+- Affirmation register: 2 pattern hits, one a false positive (a band "too self-aware"), one a topic piece (*"When Do We Know a Machine is Conscious?"*).
+
+**What this changes in the paper:** the sentence *"assistant-voice text is absent from pretraining"* was too strong and is not used. The correct statement is narrower and sharper: **the assistant-voice register has begun to leak into the 2025 crawl (~1 document in 20,000, weighted), the crawl can therefore demonstrably pick up chatbot output, and the most-reproduced chatbot sentence about inner states is still absent from it.** The D and R categories remain empty on a corpus where the register they belong to is now detectably present.
+
+⭐ **The shape, because it is this study's own subject matter:** an ad-hoc number was written into four documents and cited as verification for thirteen days. A search is an aperture; a search with no saved aperture is a claim. The re-run found something the original missed, and what it found makes the result more precise rather than less. **Read the data. Save the search.**

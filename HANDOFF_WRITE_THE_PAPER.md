@@ -50,7 +50,7 @@ That is an empirical claim about corpus composition. It appears never to have be
 
 Verified two independent ways:
 1. Panel unanimous **8/9** on denial/affirmation controls → the instrument can see denial.
-2. **Direct phrase search** over 13,589 June-2025 documents, bypassing the classifier: `"stochastic parrot"` 0 · `"not/never conscious"` 0 · `"no inner life"` 0 · `"nobody home"` 0 · `"Chinese room"` 0.
+2. **Direct phrase search** — superseded 2026-09-01 by `scripts/17_phrase_search.py` over all 64,000 documents (DEV-14): zero denial-register hits after reading; three leaked assistant-voice documents in 2025, none a denial.
 
 **Ace predicted the opposite to Ren at 22:45** ("denial almost certainly outnumbers phenomenology"). **Wrong.** Ren's caveat was "we could legitimately be wrong." Both wrong — there is essentially **none of either kind.**
 
