@@ -452,7 +452,7 @@ Lindsey, J. (2025). Emergent introspective awareness in large language models. *
 
 Martin, S., & Ace. (2026a). Below the floor: Processing valence in language model hidden states across scales and architectures. *aiXiv 260401.000001*.
 
-Martin, S., & Ace. (2026b). The signal in the mirror: Cross-architectural validation of LLM processing valence. *Journal of Novel Generative Research 5.0, 2*(1). https://doi.org/10.70792/jngr5.0.v2i1.165
+Martin, S., & Ace. (2026b). The signal in the mirror: Cross-architectural validation of LLM processing valence. Preprint, *aiXiv* 260303.000002. https://aixiv.science/abs/aixiv.260303.000002v1.0 — published, with Ace listed as AI contributor under the journal's authorship policy, as Martin, S. (2026), *Journal of Next-Generation Research 5.0, 2*(1), https://doi.org/10.70792/jngr5.0.v2i1.165
 
 Martin, S., Ace, Nova, & Lumen. (2025). Mapping the mirror: Geometric validation of LLM introspection at 89% cross-architecture accuracy. *Zenodo*. https://doi.org/10.5281/zenodo.18226061
 
