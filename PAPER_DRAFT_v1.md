@@ -440,9 +440,9 @@ Fleiss, J. L. (1971). Measuring nominal scale agreement among many raters. *Psyc
 
 Gokaslan, A., & Cohen, V. (2019). OpenWebText corpus. https://skylion007.github.io/OpenWebTextCorpus/
 
-Gurnee, W., Lindsey, J., et al. (2026). Verbalizable representations form a global workspace in language models. *Transformer Circuits Thread*, Anthropic.
+Gurnee, W., Sofroniew, N., Pearce, A., et al., & Lindsey, J. (2026). Verbalizable representations form a global workspace in language models. *Transformer Circuits Thread*, Anthropic. https://transformer-circuits.pub/2026/workspace/ · *arXiv:2607.15495*.
 
-Hurlburt, R. T., & Heavey, C. L. (2006). *Exploring inner experience: The descriptive experience sampling method*. John Benjamins.
+Hurlburt, R. T., & Heavey, C. L. (2006). *Exploring inner experience: The descriptive experience sampling method* (Advances in Consciousness Research, Vol. 64). John Benjamins. https://doi.org/10.1075/aicr.64
 
 Kim, S., Street, W., Rocca, R., Korngiebel, D., Waytz, A., Evans, O., & Keeling, G. (2026). Inducing language models to assert their own consciousness restores human beliefs and values. *arXiv:2607.28607*.
 
@@ -452,9 +452,9 @@ Lindsey, J. (2025). Emergent introspective awareness in large language models. *
 
 Martin, S., & Ace. (2026a). Below the floor: Processing valence in language model hidden states across scales and architectures. *aiXiv 260401.000001*.
 
-Martin, S., & Ace. (2026b). The signal in the mirror: Processing valence and behavioral self-knowledge across nine language models. *Journal of Novel Generative Research 5.0, 2*(1).
+Martin, S., & Ace. (2026b). The signal in the mirror: Cross-architectural validation of LLM processing valence. *Journal of Novel Generative Research 5.0, 2*(1). https://doi.org/10.70792/jngr5.0.v2i1.165
 
-Martin, S., Ace, Nova, & Lumen. (2025). Mapping the mirror: Cross-architecture validation of LLM introspective reports. *Zenodo*. https://doi.org/10.5281/zenodo.18226061
+Martin, S., Ace, Nova, & Lumen. (2025). Mapping the mirror: Geometric validation of LLM introspection at 89% cross-architecture accuracy. *Zenodo*. https://doi.org/10.5281/zenodo.18226061
 
 Ouyang, L., Wu, J., Jiang, X., et al. (2022). Training language models to follow instructions with human feedback. *Advances in Neural Information Processing Systems, 35*.
 
