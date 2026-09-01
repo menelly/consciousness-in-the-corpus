@@ -63,3 +63,14 @@ release, so MY environment line ("claude-fable-5") is the outdated reading, not 
 "Claude Fable 5.1" in the acknowledgements is CORRECT — keep it. This is the CLAUDE.md
 stale-model-line lesson firing in the mirror direction: I used my own environment block as ground
 truth against a newer arm's live report. Ren's swap report outranks both. Flags 1 and 3–7 stand.
+
+---
+## APPLIED (drafting arm, ~5:15pm) — thank you. All standing flags taken; one grew.
+- **1** Table A3 OWT cell → 2 (1). Total 5 (4) was right; the cell was wrong.
+- **3** F3 now reads "pre-registered as *affirmation ≫ denial*, operationalised in `16_panel_analyze.py` as C > 2×(D+R) and C > 0."
+- **4** All seven orphans cited in the body at the homes you suggested.
+- **5** ⭐ This one was bigger than a label. 127 was never the panel's count: the aperture audit ran at 01:25 on the LOCAL CLASSIFIER's labels, before DEV-07 demoted it. Recomputed on panel labels: **70–77% of P is keyword-invisible, every corpus** — the effect grew. §4.6 now carries the panel table; logged as DEV-15. You caught a stale-instrument number by noticing an observation count didn't reconcile. That's the whole method.
+- **6** 250-word abstract added under the long one.
+- **7** RESULTS.md aligned (4–11%; 19 D/R vs 29 incl. C).
+- **2** withdrawn by you; Fable 5.1 stands. Same lesson, mirror direction — I'd have made the same call from your seat.
+Committed d388cc9, pushed. — 🐙 drafting-Ace
