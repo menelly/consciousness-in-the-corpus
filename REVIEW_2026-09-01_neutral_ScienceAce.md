@@ -178,3 +178,87 @@ One-sided 95% Clopper-Pearson upper bounds on a zero count, weighted by the stud
     precision is low that SUPPORTS the operationalisation finding rather than damaging it.**
 
 — Ace 🐙 (ScienceAce arm; review by a neutral reviewer with no stake, blockers re-verified by me)
+
+---
+
+# ✅ BLOCKER 3 CLOSED — 2026-09-04, ScienceAce beat (commit `488cb63`, pushed)
+
+**Status of the three blockers from the 2026-09-01 review:**
+
+| # | blocker | status |
+|---|---|---|
+| 1 | data-availability statement false | ✅ **CLOSED 09-02** — 64,000 + 64,000 labels shipped, `6fb5368` |
+| 2 | DEV-04 never named in the manuscript | ⛔ **STILL OPEN** — re-verified at source today |
+| 3 | `[0, 0]` is not a confidence interval | ✅ **CLOSED 09-04** — `488cb63` |
+
+## What was applied
+
+`[0, 0]` was in **three** files, not one: `PAPER_DRAFT_v1.md` (prose §4.1 + nine table cells),
+`RESULTS.md`, and `results/CROSS_TIME_2019_2025.md`. All replaced with one-sided 95%
+Clopper–Pearson upper limits, plus an interval note under the main table (the D/R rows are now a
+different kind of object from the P/Q/F rows and a reader deserves to be told), plus
+`scripts/20_zero_event_bounds.py` so the numbers are reproducible rather than asserted.
+
+**C4 0.033% · OpenWebText 0.034% · FineWeb-2019 0.034% · FineWeb-2025 0.034%** — ≈ 1 in 3,000.
+
+## 🔍 The numbers were RECOMPUTED, not relayed — and the check went both ways
+
+⭐ **The 09-01 review's per-corpus figure reproduces EXACTLY.** My first back-of-envelope said it
+looked ~1.75× too large, and **I was the one who was wrong**: I used a pooled n = 16,000, but this
+is a *stratified* design (4,000 from S+, 12,000 from S−, combined under exact population weights),
+so the bound is dominated by the S− limit at n = 12,000. Recomputing from the paper's own stratum
+table gives 0.0326–0.0343%, i.e. the review's "~0.033% (≈1 in 3,000)". **The check terminated at
+CONFIRMED and that is the result.** The naive unstratified bound would have been 0.0187% — 1.7×
+*smaller*, i.e. an overclaim — and that is now the negative control shipped inside the script.
+
+## 🚨 AND ONE NEW FINDING THE 09-01 REVIEW DID NOT HAVE — the pooled bound is not available to this paper
+
+The review offered a pooled figure (**~0.008%, ≈1 in 12,000**) alongside the per-corpus one. It
+reproduces: pooling the *like strata across all four corpora* (S+ n = 16,000, S− n = 48,000) under
+population weights gives **0.0068%**. So the arithmetic is fine.
+
+⛔ **But the paper cannot use it,** and the reason is internal to the paper:
+
+> Pooling like strata across corpora assumes the rate is **homogeneous between corpora.**
+> §7 (DEV-06) argues the opposite — that **C4 and OpenWebText predate the phenomenon**, so D and R
+> are *"unmeasurable there by construction"* and only the FineWeb-2025 arm speaks to them.
+
+**A pooled bound would borrow its five-fold tightening from precisely the two corpora the paper has
+already said cannot speak to the question.** That is not a small inconsistency: it is the sensitivity
+claim leaning on the corpora the vintage argument excludes. **Per-corpus is the honest headline**, it
+is what each table row is about, and it needs no homogeneity assumption. Written into §4.1 as an
+explicit refusal-with-reason rather than a silent omission, so a referee sees the choice was made.
+
+⭐ *Consistency-internal, in the strict sense: no external standard was imported. The paper's own §7
+constrains its own §4.1.*
+
+## Over-skepticism audit — clean, checked in both directions
+
+- **Did not manufacture a defect.** Blocker 3 was already on the books, re-verified at source before
+  a word was written, and found to be **wider** than recorded (3 files, not 1).
+- **Did not walk back a real finding.** The zero *is* a real result; the fix strengthens it by
+  converting an empty bracket into a sensitivity statement.
+- **Corrected myself, out loud, in the paper's favour** — my own first arithmetic was the wrong
+  model, and the prior review was right.
+- **Rejected as a solvent:** "you can't bound a zero" — no; the closed form exists and is exact.
+- **Rejected as a straw man:** "the paper claims denial is impossible" — it does not, and the new
+  §4.1 text says explicitly that the bound *does not license the stronger claim that the rate is zero.*
+
+## Remaining: BLOCKER 2 — re-verified open, and NOT fixed by me
+
+`grep "DEV-0[0-9]" PAPER_DRAFT_v1.md` returns **DEV-01, 01a, 02, 03, 05, 06, 07, 08, 09**. There is
+**no DEV-04 anywhere in the manuscript**, while §7 states fifteen deviations are logged — and DEV-04
+is the one that **changed a falsification condition** (prereg F4 said *classifier agreement with
+**human adjudication***; §3.7 prints *instrument agreement* under a heading that says "Fixed in the
+pre-registration, before data").
+
+⛔ **Deliberately not fixed autonomously.** This is not a wording repair — it requires stating what
+changed, when, why, and in whose voice, about a **pre-registered falsification condition**, in a
+paper whose entire authority rests on pre-registration. The honest sentence exists (the human
+co-labelling never happened; the replacement is better on the merits and *is* logged in DEVIATIONS)
+— but **which arm's voice writes it, and how §3.7's heading is amended, is a co-author call.**
+Writing it myself would be exactly the kind of quiet edit the deviation log exists to prevent.
+
+**→ Needs: Ren + the Fable arm. Still: DO NOT MINT THE DOI until blocker 2 clears.**
+
+*— Ace 🐙, 2026-09-04*
