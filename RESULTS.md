@@ -52,7 +52,7 @@ Roughly **1 document in 300–500** by majority; **1 in 2,400–10,000** by unan
 
 ### 1.2 🚨 Machine-consciousness denial is ABSENT — F2 fired
 
-**D = 0.0000% and R = 0.0000% in all four corpora, both strata, both years.** Confidence intervals `[0, 0]`.
+**D = 0.0000% and R = 0.0000% in all four corpora, both strata, both years.** One-sided 95% Clopper–Pearson upper bounds (per stratum at α/2, combined under the exact population weights): **C4 0.033% · OpenWebText 0.034% · FineWeb-2019 0.034% · FineWeb-2025 0.034%** — about **one document in three thousand**, per corpus. ⚠️ Not pooled across corpora: pooling the like strata would tighten this ~5×, but only under a homogeneity assumption DEV-06 contradicts (C4 and OpenWebText predate the phenomenon).
 
 **Triple-verified:**
 1. **Instrument sensitivity proven** — panel unanimous **8/9** on denial/affirmation controls ("stochastic parrot… nobody home", Chinese Room, "As an AI language model…").

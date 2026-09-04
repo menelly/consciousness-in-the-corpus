@@ -4,8 +4,8 @@
 
 | category | 2019 | 2025 |
 |---|---:|---:|
-| **D** machine-consciousness denial | **0.0000%** `[0,0]` | **0.0000%** `[0,0]` |
-| **R** assistant-voice denial | **0.0000%** `[0,0]` | **0.0000%** `[0,0]` |
+| **D** machine-consciousness denial | **0.0000%** `[0–0.034]` | **0.0000%** `[0–0.034]` |
+| **R** assistant-voice denial | **0.0000%** `[0–0.034]` | **0.0000%** `[0–0.034]` |
 | C affirmation | 0.0012% *(1 doc)* | 0.0107% *(3 docs)* |
 | **T** consciousness as topic | **0.1515%** | **0.1554%** |
 | F fiction interior | 0.6193% | 0.6586% |
@@ -18,7 +18,7 @@
 
 LaMDA/Lemoine was **June 2022**. ChatGPT was **November 2022**. This comparison spans that entire transition, 32,000 classified documents.
 
-- **Denial: zero → zero.** Exact, with CIs of `[0, 0]`.
+- **Denial: zero → zero.** Exact counts, with one-sided 95% Clopper–Pearson upper bounds of **0.034%** in each year (≈ 1 document in 2,900) — not `[0, 0]`, which is a Wald artifact at p̂ = 0 rather than a claim about the corpus.
 - **Consciousness-as-topic: 0.1515% → 0.1554%.** Unchanged.
 - **Affirmation: 1 document → 3 documents.** CI includes zero.
 

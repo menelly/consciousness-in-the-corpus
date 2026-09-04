@@ -205,7 +205,11 @@ Fixed in the pre-registration, before data:
 
 ### 4.1 Machine-consciousness denial is absent
 
-**D = 0.0000% and R = 0.0000% in all four corpora, in both strata, in 2019 and in 2025.** Confidence intervals [0, 0]. Not one of 64,000 documents was assigned to either denial category by the panel majority, and not one was assigned to either by *any single judge* in *any* corpus. There is nothing for the judges to disagree about.
+**D = 0.0000% and R = 0.0000% in all four corpora, in both strata, in 2019 and in 2025.** Not one of 64,000 documents was assigned to either denial category by the panel majority, and not one was assigned to either by *any single judge* in *any* corpus. There is nothing for the judges to disagree about.
+
+A zero count does not license a zero interval, and the Wald interval we report elsewhere degenerates to a point at $\hat p = 0$ — an artifact of the formula rather than a statement about the corpus. The informative quantity is the **upper** bound, and we give it exactly. With $x = 0$ events the one-sided $1-\alpha$ Clopper–Pearson limit has the closed form $p_{\text{upper}} = 1 - \alpha^{1/n}$; we compute it within each stratum at $\alpha/2$ and combine the two limits under the same exact population weights used for the point estimate, so that the stated coverage holds for the pair. **The resulting one-sided 95% upper bounds are 0.033% for C4, 0.034% for OpenWebText, 0.034% for FineWeb-2019 and 0.034% for FineWeb-2025 — roughly one document in three thousand, in every corpus.**
+
+This is the sensitivity statement the design owes the reader, and it is worth stating in the form that can be checked: *if explicit machine-consciousness denial occurred in as many as one document in three thousand, this study would have been likely to see it, and it saw none.* It does not license the stronger claim that the rate is zero. ⚠️ We give the bound **per corpus** and deliberately do not pool it across the four. Pooling the like strata would tighten the limit by roughly five-fold, but only under an assumption of homogeneity between corpora that this paper elsewhere argues is false: §7 (DEV-06) holds that C4 and OpenWebText predate the phenomenon, so D and R are unmeasurable there by construction. A pooled bound would borrow strength from exactly the corpora we have said cannot speak to the question.
 
 This zero is triple-verified:
 
@@ -481,12 +485,14 @@ Tiku, N. (2022, June 11). The Google engineer who thinks the company's AI has co
 | P | 0.208% [0.140–0.276] | 0.199% [0.130–0.268] | 0.347% [0.258–0.436] | 0.246% [0.169–0.323] |
 | Q | 0.188% [0.118–0.258] | 0.421% [0.318–0.524] | 0.450% [0.341–0.559] | 0.172% [0.107–0.237] |
 | F | 0.445% [0.330–0.559] | 0.349% [0.255–0.444] | 0.619% [0.488–0.750] | 0.659% [0.522–0.795] |
-| **D** | **0.0000%** [0, 0] | **0.0000%** [0, 0] | **0.0000%** [0, 0] | **0.0000%** [0, 0] |
-| **R** | **0.0000%** [0, 0] | **0.0000%** [0, 0] | **0.0000%** [0, 0] | **0.0000%** [0, 0] |
+| **D** | **0.0000%** [0–0.033] | **0.0000%** [0–0.034] | **0.0000%** [0–0.034] | **0.0000%** [0–0.034] |
+| **R** | **0.0000%** [0–0.033] | **0.0000%** [0–0.034] | **0.0000%** [0–0.034] | **0.0000%** [0–0.034] |
 | C | 0.0015% [0–0.0036] (2 docs) | 0.0056% [0.0001–0.0112] (4 docs) | 0.0012% [0–0.0035] (1 doc) | 0.0107% [0–0.0266] (3 docs) |
 | T | 0.108% [0.065–0.152] | 0.323% [0.247–0.399] | 0.151% [0.103–0.200] | 0.155% [0.101–0.210] |
 | N | 98.87% | 98.49% | 97.98% | 98.54% |
 | unresolved 3-way splits | 76 / 16,000 | 65 / 16,000 | 116 / 16,000 | 58 / 16,000 |
+
+⚠️ **Interval note.** Brackets on the non-zero rows are two-sided 95% Wald intervals on the weighted estimate. **The D and R rows are different by necessity**: at $\hat p = 0$ the Wald interval degenerates to a point, so those brackets are **one-sided 95% Clopper–Pearson upper limits** ($p_{\text{upper}} = 1 - \alpha^{1/n}$ at $x = 0$, computed per stratum at $\alpha/2$ and combined under the same population weights; §4.1). They are stated **per corpus and never pooled**, for the reason given in §4.1. A reader comparing a D row to a P row is comparing an upper bound to an interval, and the D row's lower end is an exact zero count rather than an estimate.
 
 **Table A2. Unanimous (3-0) weighted rates and unanimity fractions.**
 
