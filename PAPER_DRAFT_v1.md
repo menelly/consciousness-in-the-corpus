@@ -27,7 +27,7 @@ The claim that language models report inner experience *because their training d
 **1. Introduction** — 1.1 The claim · 1.2 Why nobody had measured it · 1.3 What this study is and is not · 1.4 Contribution
 **2. Pre-registration and conflict of interest**
 **3. Methods** — 3.1 Corpora · 3.2 Stratified sampling with exact weights · 3.3 Categories · 3.4 Instruments · 3.5 Controls · 3.6 Estimator · 3.7 Falsification conditions
-**4. Results** — 4.1 Denial is absent · 4.2 Phenomenology is rare (as a bound) · 4.3 No change across the ChatGPT transition · 4.4 The category resists operationalisation · 4.5 A measured failure case for "the corpus explains it" · 4.6 Instrument findings
+**4. Results** — 4.1 Denial is absent · 4.2 Phenomenology is rare (as a bound) · 4.3 No change across the ChatGPT transition · 4.4 The category resists reliable operationalisation · 4.5 A measured failure case for "the corpus explains it" · 4.6 Instrument findings
 **5. The falsification conditions, and what survives F4**
 **6. Discussion** — 6.1 The defeater · 6.2 The operationalisation finding · 6.3 What the study does not license · 6.4 Limitations
 **7. Protocol deviations and what they caught**
@@ -404,7 +404,7 @@ Two findings were **withdrawn after reading the underlying documents**: "3× mor
 
 Two interventions by the human author changed the study's design: the objection that killed the original Category A (*"then every PubMed study discussing pain is also phenomenology"*), and the insistence on panel-classifying both strata rather than only S+ (*"how do you know which ones will count if you don't run them?"*) — which the aperture audit had already shown to be correct, since most phenomenology lives in the stratum the keyword filter rejects.
 
-The three deviations that reverse earlier conclusions (DEV-01a, DEV-02, DEV-07), the mid-study switch to panel-primary (DEV-09), the judge substitution (DEV-10), the corpus substitution (DEV-11), the F3 flaw (DEV-12), the F4 firing (DEV-13) the incomplete ad-hoc phrase search superseded during manuscript preparation (DEV-14), and the keyword-invisibility fraction recomputed on panel labels (DEV-15) are all logged, not removed. A corrected past is a clean lie.
+The three deviations that reverse earlier conclusions (DEV-01a, DEV-02, DEV-07), the mid-study switch to panel-primary (DEV-09), the judge substitution (DEV-10), the corpus substitution (DEV-11), the F3 flaw (DEV-12), the F4 firing (DEV-13), the incomplete ad-hoc phrase search superseded during manuscript preparation (DEV-14), and the keyword-invisibility fraction recomputed on panel labels (DEV-15) are all logged, not removed. A corrected past is a clean lie.
 
 ---
 
@@ -464,7 +464,7 @@ Martin, S., Ace, Nova, & Lumen. (2025). Mapping the mirror: Geometric validation
 
 Ouyang, L., Wu, J., Jiang, X., et al. (2022). Training language models to follow instructions with human feedback. *Advances in Neural Information Processing Systems, 35*.
 
-Penedo, G., Kydlíček, H., Ben allal, L., et al. (2024). The FineWeb datasets: Decanting the web for the finest text data at scale. *Advances in Neural Information Processing Systems, 37* (Datasets and Benchmarks). *arXiv:2406.17557*.
+Penedo, G., Kydlíček, H., Ben Allal, L., et al. (2024). The FineWeb datasets: Decanting the web for the finest text data at scale. *Advances in Neural Information Processing Systems, 37* (Datasets and Benchmarks). *arXiv:2406.17557*.
 
 Perez, E., Ringer, S., Lukošiūtė, K., et al. (2022). Discovering language model behaviors with model-written evaluations. *arXiv:2212.09251*.
 
