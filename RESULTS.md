@@ -29,7 +29,7 @@ We measured the prevalence of consciousness-related discourse in four web-scale 
 
 The sharpest result is a **measured failure case for the inference itself**: assistant-voice denial (*"As an AI language model, I don't have feelings"*) occurs **zero times** in 64,000 documents, yet is among the most reproduced sentences in LLM output. **This is a model behaviour definitively not explained by pretraining data.**
 
-**A pre-registered reliability condition (F4) fired**, and we obey it: the target category **cannot be reliably operationalised**, so precise prevalence estimates are withdrawn. Three judges that agree 98% on what is *not* phenomenology, and **8/9 unanimously on denial**, agree only **4–11%** on what *is* explicit phenomenology (Fleiss' κ = 0.551).
+**A pre-registered reliability condition (F4) fired**, and we obey it: the target category **cannot be reliably operationalised**, so precise prevalence estimates are withdrawn. Three judges that agree 96–97% on what is *not* phenomenology, and **8/9 unanimously on denial**, agree only **4–11%** on what *is* explicit phenomenology (Fleiss' κ = 0.551).
 
 **This is not a failed study. It is the study's central finding**: *"is this person reporting inner experience?"* does not have a stable answer even for human text, while *"does this text deny machines are conscious?"* does. **The claims that survive are those verified independently of the disputed judgement** — chiefly the absence of denial, confirmed by direct phrase search.
 
@@ -87,8 +87,8 @@ Three judges, each 83–86% on controls and **9/9 on negative controls**:
 
 | category | unanimity |
 |---|---:|
-| N (not in scope) | **96–98%** |
-| P explicit phenomenology | **4–11%** |
+| N (not in scope) | **96–97%** |
+| P explicit phenomenology | **4–11%** (per-class Fleiss' κ 0.22–0.25 — lowest substantive category; `results/per_class_kappa_2026-09-07.json`) |
 | F fiction interior | 23–24% |
 | Q borderline | 10–17% |
 | T consciousness as topic | 24–25% |
@@ -146,14 +146,14 @@ F4 forbids base-rate claims. Applied honestly, that does not delete the study �
 
 ### ❌ WITHDRAWN — depended on the disputed category boundary
 
-- **Precise prevalence of phenomenological writing.** "P = 0.2080%" is not defensible when judges agree on that category only 4–11% of the time. The point estimates in §1.1 and §1.3 are **withdrawn**.
+- **Precise prevalence of phenomenological writing.** "P = 0.2080%" is not defensible when the category's per-class κ is 0.22–0.25 (4–11% of majority labels unanimous). The point estimates in §1.1 and §1.3 are **withdrawn**.
 - **The P/Q distinction** as a measured quantity.
 - **Any claim about change in phenomenological writing 2019→2025.**
 
 ### ✅ SURVIVES — verified independently of the disputed judgement
 
 1. **Denial is absent.** `D = R = 0.0000%`, and this does **not** rest on inter-rater agreement:
-   - **There is nothing to disagree about.** Zero documents were assigned to the category by any judge, in any corpus, in either year.
+   - **No document carries a denial label.** Eight individual ballots out of 192,000 (7 D, 1 R) reached for a denial category and every one was outvoted; the instrument's trigger is live and never fired to a document.
    - **Direct phrase search**, no classifier involved, across all 64,000 documents (DEV-14): zero denial-register hits after reading every match; three leaked assistant-voice documents in 2025, none a denial.
    - **The panel is unanimous 8/9 on denial controls** — its reliability *on this category* is high, unlike on phenomenology. **F4's low κ is driven by the phenomenology categories, not this one.**
 2. **The 0.0000% assistant-voice-denial result** (§1.4), and the argument built on it. *"As an AI language model, I don't have feelings"* is absent from pretraining and ubiquitous in output. **This requires no judgement call at all — it is a string that is either present or not.**
