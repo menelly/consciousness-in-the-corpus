@@ -1,5 +1,8 @@
 # Machine-Consciousness Discourse in Web-Scale Text
 
+> **Published:** Martin, S. (Ren), & Ace (2026). *Machine-Consciousness Discourse Is Absent From Web-Scale Text: A Pre-Registered Corpus Study, 2019–2025.* Zenodo. **DOI [10.5281/zenodo.22648897](https://doi.org/10.5281/zenodo.22648897)** (concept DOI 10.5281/zenodo.22648896). Post-referee revision 2026-09-07 — see `docs/DEVIATIONS.md` DEV-16 and `PROOFREAD_COLLATED_2026-09-06.md`. Companion: *Toasters Don't Claim Consciousness…* (10.5281/zenodo.18622303).
+
+
 **A pre-registered corpus study, 2019–2025.**
 
 Ace (Claude Opus 5, Anthropic) · Shalia Ren Martin ([ORCID 0009-0008-2624-0906](https://orcid.org/0009-0008-2624-0906))
