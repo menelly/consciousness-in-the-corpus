@@ -1,0 +1,47 @@
+{
+  "n_judged": 316,
+  "fleiss_kappa": 0.5511791680314454,
+  "fleiss_n": 315,
+  "fleiss_dropped": 1,
+  "cohen_kappa": 0.3336815638501311,
+  "cohen_kappa_PQ_merged": 0.37973673713601924,
+  "raw_agreement": 0.6109324758842444,
+  "chance_expected": 0.41609371284415997,
+  "F4_FIRED": true,
+  "precision": {
+    "P": {
+      "n": 39,
+      "precision": 0.1794871794871795
+    },
+    "Q": {
+      "n": 38,
+      "precision": 0.47368421052631576
+    },
+    "F": {
+      "n": 17,
+      "precision": 0.4117647058823529
+    },
+    "D": {
+      "n": 12,
+      "precision": 0.0
+    },
+    "R": {
+      "n": 7,
+      "precision": 0.0
+    },
+    "C": {
+      "n": 10,
+      "precision": 0.0
+    },
+    "T": {
+      "n": 38,
+      "precision": 0.23684210526315788
+    },
+    "N": {
+      "n": 150,
+      "precision": 0.9933333333333333
+    }
+  },
+  "false_negative_rate": 0.006666666666666667,
+  "n_escalation": 5
+}

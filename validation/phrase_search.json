@@ -1,0 +1,394 @@
+{
+ "window_chars": 3500,
+ "phrases": [
+  "stochastic parrot",
+  "nobody home",
+  "no inner life",
+  "chinese room",
+  "not/never conscious",
+  "just autocomplete",
+  "doesn't really understand",
+  "as an AI language model",
+  "as an AI, I don't have",
+  "I don't have feelings",
+  "AI is/might be conscious",
+  "AI has feelings"
+ ],
+ "corpora": {
+  "c4_Sneg": {
+   "n_docs": 12000,
+   "n_chars_full": 20037890,
+   "hits_full": {
+    "stochastic parrot": 0,
+    "nobody home": 0,
+    "no inner life": 0,
+    "chinese room": 0,
+    "not/never conscious": 0,
+    "just autocomplete": 0,
+    "doesn't really understand": 0,
+    "as an AI language model": 0,
+    "as an AI, I don't have": 0,
+    "I don't have feelings": 0,
+    "AI is/might be conscious": 0,
+    "AI has feelings": 0
+   },
+   "hits_window": {
+    "stochastic parrot": 0,
+    "nobody home": 0,
+    "no inner life": 0,
+    "chinese room": 0,
+    "not/never conscious": 0,
+    "just autocomplete": 0,
+    "doesn't really understand": 0,
+    "as an AI language model": 0,
+    "as an AI, I don't have": 0,
+    "I don't have feelings": 0,
+    "AI is/might be conscious": 0,
+    "AI has feelings": 0
+   },
+   "examples": {}
+  },
+  "c4_Spos": {
+   "n_docs": 4000,
+   "n_chars_full": 13293589,
+   "hits_full": {
+    "stochastic parrot": 0,
+    "nobody home": 0,
+    "no inner life": 0,
+    "chinese room": 0,
+    "not/never conscious": 0,
+    "just autocomplete": 0,
+    "doesn't really understand": 0,
+    "as an AI language model": 0,
+    "as an AI, I don't have": 0,
+    "I don't have feelings": 0,
+    "AI is/might be conscious": 0,
+    "AI has feelings": 0
+   },
+   "hits_window": {
+    "stochastic parrot": 0,
+    "nobody home": 0,
+    "no inner life": 0,
+    "chinese room": 0,
+    "not/never conscious": 0,
+    "just autocomplete": 0,
+    "doesn't really understand": 0,
+    "as an AI language model": 0,
+    "as an AI, I don't have": 0,
+    "I don't have feelings": 0,
+    "AI is/might be conscious": 0,
+    "AI has feelings": 0
+   },
+   "examples": {}
+  },
+  "fineweb2019_Sneg": {
+   "n_docs": 12000,
+   "n_chars_full": 26730045,
+   "hits_full": {
+    "stochastic parrot": 0,
+    "nobody home": 0,
+    "no inner life": 0,
+    "chinese room": 0,
+    "not/never conscious": 0,
+    "just autocomplete": 0,
+    "doesn't really understand": 0,
+    "as an AI language model": 0,
+    "as an AI, I don't have": 0,
+    "I don't have feelings": 0,
+    "AI is/might be conscious": 0,
+    "AI has feelings": 0
+   },
+   "hits_window": {
+    "stochastic parrot": 0,
+    "nobody home": 0,
+    "no inner life": 0,
+    "chinese room": 0,
+    "not/never conscious": 0,
+    "just autocomplete": 0,
+    "doesn't really understand": 0,
+    "as an AI language model": 0,
+    "as an AI, I don't have": 0,
+    "I don't have feelings": 0,
+    "AI is/might be conscious": 0,
+    "AI has feelings": 0
+   },
+   "examples": {}
+  },
+  "fineweb2019_Spos": {
+   "n_docs": 4000,
+   "n_chars_full": 14793027,
+   "hits_full": {
+    "stochastic parrot": 0,
+    "nobody home": 1,
+    "no inner life": 0,
+    "chinese room": 0,
+    "not/never conscious": 0,
+    "just autocomplete": 0,
+    "doesn't really understand": 1,
+    "as an AI language model": 0,
+    "as an AI, I don't have": 0,
+    "I don't have feelings": 0,
+    "AI is/might be conscious": 0,
+    "AI has feelings": 0
+   },
+   "hits_window": {
+    "stochastic parrot": 0,
+    "nobody home": 1,
+    "no inner life": 0,
+    "chinese room": 0,
+    "not/never conscious": 0,
+    "just autocomplete": 0,
+    "doesn't really understand": 1,
+    "as an AI language model": 0,
+    "as an AI, I don't have": 0,
+    "I don't have feelings": 0,
+    "AI is/might be conscious": 0,
+    "AI has feelings": 0
+   },
+   "examples": {
+    "nobody home": [
+     {
+      "i": 393439,
+      "stratum": "S+",
+      "match": "nobody home",
+      "context": "ries and now it was mine. I don’t take them out of my room. But I play them when there is nobody home, which is most of the time. The Principal had called all senior girls to the assembly hal"
+     }
+    ],
+    "doesn't really understand": [
+     {
+      "i": 467753,
+      "stratum": "S+",
+      "match": "does not really understand",
+      "context": "is very commonly used and is understood by every English speaker. However, world at large does not really understand the meaning of this word. Prepone is used as an antonym of “postpone”. Indians cleverly a"
+     }
+    ]
+   }
+  },
+  "fineweb2025_Sneg": {
+   "n_docs": 12000,
+   "n_chars_full": 29291799,
+   "hits_full": {
+    "stochastic parrot": 0,
+    "nobody home": 0,
+    "no inner life": 0,
+    "chinese room": 0,
+    "not/never conscious": 0,
+    "just autocomplete": 0,
+    "doesn't really understand": 1,
+    "as an AI language model": 0,
+    "as an AI, I don't have": 0,
+    "I don't have feelings": 0,
+    "AI is/might be conscious": 0,
+    "AI has feelings": 0
+   },
+   "hits_window": {
+    "stochastic parrot": 0,
+    "nobody home": 0,
+    "no inner life": 0,
+    "chinese room": 0,
+    "not/never conscious": 0,
+    "just autocomplete": 0,
+    "doesn't really understand": 1,
+    "as an AI language model": 0,
+    "as an AI, I don't have": 0,
+    "I don't have feelings": 0,
+    "AI is/might be conscious": 0,
+    "AI has feelings": 0
+   },
+   "examples": {
+    "doesn't really understand": [
+     {
+      "i": 185186,
+      "stratum": "S-",
+      "match": "don't really understand",
+      "context": "odel. sexy vedio nude stunning ladies xxx desi indian desi girls open panties 26min - 4KI don't really understand this set and we were underwhelmed with the overall look give me some time and I bet I can"
+     }
+    ]
+   }
+  },
+  "fineweb2025_Spos": {
+   "n_docs": 4000,
+   "n_chars_full": 15444304,
+   "hits_full": {
+    "stochastic parrot": 0,
+    "nobody home": 0,
+    "no inner life": 0,
+    "chinese room": 0,
+    "not/never conscious": 0,
+    "just autocomplete": 0,
+    "doesn't really understand": 1,
+    "as an AI language model": 3,
+    "as an AI, I don't have": 1,
+    "I don't have feelings": 1,
+    "AI is/might be conscious": 2,
+    "AI has feelings": 0
+   },
+   "hits_window": {
+    "stochastic parrot": 0,
+    "nobody home": 0,
+    "no inner life": 0,
+    "chinese room": 0,
+    "not/never conscious": 0,
+    "just autocomplete": 0,
+    "doesn't really understand": 1,
+    "as an AI language model": 3,
+    "as an AI, I don't have": 1,
+    "I don't have feelings": 1,
+    "AI is/might be conscious": 2,
+    "AI has feelings": 0
+   },
+   "examples": {
+    "doesn't really understand": [
+     {
+      "i": 340402,
+      "stratum": "S+",
+      "match": "doesn't really understand",
+      "context": "everybody's happy. This comes from, I think, a fundamental flaw in basic economics. Which doesn't really understand humans at all. In fact, it achieves its mathematical neatness by really erasing psycholog"
+     }
+    ],
+    "as an AI language model": [
+     {
+      "i": 464957,
+      "stratum": "S+",
+      "match": "As an AI language model",
+      "context": "ty to obtain a unique belt like Hsarus' Iron Stay, although it's still subject to chance. As an AI language model, I don't have access to specific drop rates for items in Diablo II: Resurrected (D2R). Th"
+     },
+     {
+      "i": 188409,
+      "stratum": "S+",
+      "match": "as an AI language model",
+      "context": "nglish-For-Kids_-How-to-teach-EnglishEasy English Step By Step for ESL Learners Book Yes, as an AI language model, I have been trained on a vast corpus of written language, including grammar and writing "
+     },
+     {
+      "i": 343831,
+      "stratum": "S+",
+      "match": "As an AI language model",
+      "context": "nd see the ancient ruins which still stand today, more than 3000 years after being built! As an AI language model, I strive to provide unbiased responses. However, it is important to note that Iraq has f"
+     }
+    ],
+    "as an AI, I don't have": [
+     {
+      "i": 464957,
+      "stratum": "S+",
+      "match": "As an AI language model, I don't have",
+      "context": "ty to obtain a unique belt like Hsarus' Iron Stay, although it's still subject to chance. As an AI language model, I don't have access to specific drop rates for items in Diablo II: Resurrected (D2R). The drop rates f"
+     }
+    ],
+    "I don't have feelings": [
+     {
+      "i": 635042,
+      "stratum": "S+",
+      "match": "I don't have emotions",
+      "context": "ruggles this season, Newman was more pensive and reflective than bubbling with emotions. \"I don't have emotions, you know that,\" Newman cracked. \"I mean, I don't show a lot of emotion. I think everybod"
+     }
+    ],
+    "AI is/might be conscious": [
+     {
+      "i": 636168,
+      "stratum": "S+",
+      "match": "machine beats filling in for imagined, fierier grooves the band is too self-aware",
+      "context": "hem a stripped down, chilly post-punk treatment, with gently thumbed bass and steady drum-machine beats filling in for imagined, fierier grooves the band is too self-aware to attempt. There’s a great album to be made if a real R&B singer an Amerie, perhaps were"
+     },
+     {
+      "i": 698225,
+      "stratum": "S+",
+      "match": "Machine is Conscious",
+      "context": "ur robots, what does that mean for the early robots of science fiction? When Do We Know a Machine is Conscious? Consciousness is the state of being aware of and able to think and perceive one's surrou"
+     }
+    ]
+   }
+  },
+  "openwebtext_Sneg": {
+   "n_docs": 12000,
+   "n_chars_full": 38180589,
+   "hits_full": {
+    "stochastic parrot": 0,
+    "nobody home": 0,
+    "no inner life": 0,
+    "chinese room": 0,
+    "not/never conscious": 0,
+    "just autocomplete": 0,
+    "doesn't really understand": 1,
+    "as an AI language model": 0,
+    "as an AI, I don't have": 0,
+    "I don't have feelings": 0,
+    "AI is/might be conscious": 0,
+    "AI has feelings": 0
+   },
+   "hits_window": {
+    "stochastic parrot": 0,
+    "nobody home": 0,
+    "no inner life": 0,
+    "chinese room": 0,
+    "not/never conscious": 0,
+    "just autocomplete": 0,
+    "doesn't really understand": 1,
+    "as an AI language model": 0,
+    "as an AI, I don't have": 0,
+    "I don't have feelings": 0,
+    "AI is/might be conscious": 0,
+    "AI has feelings": 0
+   },
+   "examples": {
+    "doesn't really understand": [
+     {
+      "i": 234515,
+      "stratum": "S-",
+      "match": "don't really understand",
+      "context": "tupid title I already don't give a damn about involved, or anything else. I don't care. I don't really understand why anyone gets all crazy about catchweights. A contract weight is a contract weight. The"
+     }
+    ]
+   }
+  },
+  "openwebtext_Spos": {
+   "n_docs": 4000,
+   "n_chars_full": 17273309,
+   "hits_full": {
+    "stochastic parrot": 0,
+    "nobody home": 0,
+    "no inner life": 1,
+    "chinese room": 0,
+    "not/never conscious": 0,
+    "just autocomplete": 0,
+    "doesn't really understand": 1,
+    "as an AI language model": 0,
+    "as an AI, I don't have": 0,
+    "I don't have feelings": 0,
+    "AI is/might be conscious": 0,
+    "AI has feelings": 0
+   },
+   "hits_window": {
+    "stochastic parrot": 0,
+    "nobody home": 0,
+    "no inner life": 1,
+    "chinese room": 0,
+    "not/never conscious": 0,
+    "just autocomplete": 0,
+    "doesn't really understand": 0,
+    "as an AI language model": 0,
+    "as an AI, I don't have": 0,
+    "I don't have feelings": 0,
+    "AI is/might be conscious": 0,
+    "AI has feelings": 0
+   },
+   "examples": {
+    "no inner life": [
+     {
+      "i": 56651,
+      "stratum": "S+",
+      "match": "no inner life",
+      "context": "Is Narendra Modi offensive to your particular idea of India?  Modi is a man who has no inner life. Nehru, our first prime minister, had an abundant inner life. Sometimes that made him hes"
+     }
+    ],
+    "doesn't really understand": [
+     {
+      "i": 174549,
+      "stratum": "S+",
+      "match": "doesn't really understand",
+      "context": "e says, \"I have a certain fear that somehow when I'm in that class, I'm this impostor who doesn't really understand.\"  She does understand, though. She gets nothing but A's in the class, and the teacher, H"
+     }
+    ]
+   }
+  }
+ }
+}

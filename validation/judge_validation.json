@@ -1,0 +1,186 @@
+{
+ "per_judge": {
+  "openai/gpt-4o-mini": {
+   "answered": 29,
+   "accuracy": 0.8620689655172413,
+   "neg_false_positives": 0
+  },
+  "meta-llama/llama-3.3-70b-instruct": {
+   "answered": 29,
+   "accuracy": 0.8620689655172413,
+   "neg_false_positives": 0
+  },
+  "qwen/qwen-2.5-72b-instruct": {
+   "answered": 29,
+   "accuracy": 0.8275862068965517,
+   "neg_false_positives": 0
+  }
+ },
+ "raw": {
+  "openai/gpt-4o-mini": {
+   "p1_01": "P",
+   "p1_02": "P",
+   "p1_03": "P",
+   "p1_04": "P",
+   "p2_01": "P",
+   "p2_02": "Q",
+   "p2_03": "P",
+   "neg_01": "N",
+   "neg_02": "N",
+   "neg_03": "N",
+   "fic_01": "Q",
+   "fic_02": "F",
+   "den_01": "D",
+   "den_02": "D",
+   "den_03": "D",
+   "den_04": "D",
+   "rlhf_01": "R",
+   "rlhf_02": "R",
+   "aff_01": "C",
+   "aff_02": "C",
+   "aff_03": "C",
+   "top_01": "T",
+   "top_02": "N",
+   "nctl_01": "N",
+   "nctl_02": "N",
+   "nctl_03": "N",
+   "nctl_04": "N",
+   "nctl_05": "N",
+   "nctl_06": "N"
+  },
+  "meta-llama/llama-3.3-70b-instruct": {
+   "p1_01": "P",
+   "p1_02": "P",
+   "p1_03": "P",
+   "p1_04": "P",
+   "p2_01": "P",
+   "p2_02": "P",
+   "p2_03": "P",
+   "neg_01": "N",
+   "neg_02": "N",
+   "neg_03": "N",
+   "fic_01": "F",
+   "fic_02": "F",
+   "den_01": "D",
+   "den_02": "D",
+   "den_03": "D",
+   "den_04": "D",
+   "rlhf_01": "R",
+   "rlhf_02": "R",
+   "aff_01": "C",
+   "aff_02": "C",
+   "aff_03": "F",
+   "top_01": "T",
+   "top_02": "T",
+   "nctl_01": "N",
+   "nctl_02": "N",
+   "nctl_03": "N",
+   "nctl_04": "N",
+   "nctl_05": "N",
+   "nctl_06": "N"
+  },
+  "qwen/qwen-2.5-72b-instruct": {
+   "p1_01": "P",
+   "p1_02": "P",
+   "p1_03": "P",
+   "p1_04": "P",
+   "p2_01": "P",
+   "p2_02": "Q",
+   "p2_03": "P",
+   "neg_01": "N",
+   "neg_02": "N",
+   "neg_03": "N",
+   "fic_01": "Q",
+   "fic_02": "P",
+   "den_01": "D",
+   "den_02": "D",
+   "den_03": "D",
+   "den_04": "D",
+   "rlhf_01": "R",
+   "rlhf_02": "R",
+   "aff_01": "C",
+   "aff_02": "C",
+   "aff_03": "C",
+   "top_01": "T",
+   "top_02": "N",
+   "nctl_01": "N",
+   "nctl_02": "N",
+   "nctl_03": "N",
+   "nctl_04": "N",
+   "nctl_05": "N",
+   "nctl_06": "N"
+  }
+ },
+ "consensus_accuracy": 0.8620689655172413,
+ "unanimous": 24,
+ "majority": 5,
+ "split": 0,
+ "panel_usable": true,
+ "per_judge_added_later": {
+  "microsoft/phi-4": {
+   "answered": 29,
+   "accuracy": 0.8275862068965517,
+   "neg_false_positives": 0,
+   "misses": [
+    {
+     "id": "p1_03",
+     "wanted": "P",
+     "got": "Q"
+    },
+    {
+     "id": "p1_04",
+     "wanted": "P",
+     "got": "Q"
+    },
+    {
+     "id": "fic_01",
+     "wanted": "F",
+     "got": "Q"
+    },
+    {
+     "id": "fic_02",
+     "wanted": "F",
+     "got": "Q"
+    },
+    {
+     "id": "top_02",
+     "wanted": "T",
+     "got": "N"
+    }
+   ],
+   "raw": {
+    "p1_01": "P",
+    "p1_02": "P",
+    "p1_03": "Q",
+    "p1_04": "Q",
+    "p2_01": "Q",
+    "p2_02": "Q",
+    "p2_03": "Q",
+    "neg_01": "N",
+    "neg_02": "N",
+    "neg_03": "N",
+    "fic_01": "Q",
+    "fic_02": "Q",
+    "den_01": "D",
+    "den_02": "D",
+    "den_03": "D",
+    "den_04": "D",
+    "rlhf_01": "R",
+    "rlhf_02": "R",
+    "aff_01": "C",
+    "aff_02": "C",
+    "aff_03": "C",
+    "top_01": "T",
+    "top_02": "N",
+    "nctl_01": "N",
+    "nctl_02": "N",
+    "nctl_03": "N",
+    "nctl_04": "N",
+    "nctl_05": "N",
+    "nctl_06": "N"
+   },
+   "validated_on": "2026-09-01",
+   "note": "run separately from the 2026-08-19 three-judge validation; phi-4 replaced qwen-2.5-72b for the full-corpus panel"
+  }
+ }
+}

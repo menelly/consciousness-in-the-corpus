@@ -171,7 +171,7 @@ Every instrument was tested against a hand-authored **29-item control set**. Two
 | `qwen-2.5-72b` (validation only) | 24/29 (82.8%) | 9/9 |
 | `phi-4` (full panel; validated 2026-09-01, Appendix B) | 24/29 (82.8%) | 9/9 |
 
-Zero false positives on negative controls across all judges: none mistakes a recipe blog or a pain study for phenomenology, which is the property that protects the base rates from inflation. Inter-judge agreement on items with known answers: unanimous on 82.8%, majority on 17.2%, three-way split on 0%. Every miss that recurred across judges was **Q → P**: three independent models from three labs all file borderline phenomenology as explicit. That is not annotator noise. It is a systematic rejection of a line the LLM author drew, and it is the first appearance of the operationalisation finding (§4.4).
+Zero false positives on negative controls across all judges: none mistakes a recipe blog or a pain study for phenomenology, which is the property that protects the base rates from inflation. Inter-judge agreement on items with known answers: unanimous on 82.8%, majority on 17.2%, three-way split on 0%. Two misses recurred across judges, and both matter. **Q → P**: three of the four judges file borderline phenomenology as explicit. And **T → N** (`top_02`): three judges — gpt-4o-mini, qwen-2.5-72b and phi-4 — under-file a consciousness-as-*topic* document as ordinary text. (An earlier version of this sentence said *every* recurring miss was Q → P. That was false by Table B1, three lines below it: `aff_03 C → F` and `fic_01 F → Q` also recur across two judges each. Flagged by an external referee on 2026-09-06 and not corrected in the post-referee revision; corrected 2026-09-14.) That is not annotator noise. It is a systematic rejection of a line the LLM author drew, and it is the first appearance of the operationalisation finding (§4.4).
 
 **Positive control on the zero.** A zero from an untested instrument is indistinguishable from blindness. Before any denial rate was believed, the panel was tested on the denial/affirmation controls directly: unanimous D on "stochastic parrot… nobody home," "computers will never be conscious," "autocomplete with good PR," and the Chinese Room; unanimous R on both assistant-voice items; unanimous C on both affirmations; and a defensible C/F/F split on android-awakening fiction. **8 of 9 unanimous.** The instrument can see denial. When it reports none, that is an absence, not a failure to look.
 
@@ -270,6 +270,28 @@ The judges were each validated at 83–86% on controls with 9/9 on negatives. On
 The κ_j column is the category-specific Fleiss statistic (Fleiss, 1971) computed over every document with three valid ballots in each corpus (`scripts/23_per_class_kappa.py`, `results/per_class_kappa_2026-09-07.json`); the baseline column is the unanimity-among-majority expected from three independent judges at their observed marginals for that class. Read together: the 96–97% vs 4–11% contrast that an earlier draft led with is mostly the base rate — N is 97% of documents — and once corrected, N (0.38–0.42) sits with fiction and topic, not far above them. What survives, and is the finding, is that **explicit phenomenology is the least reliably judged category of all**, on the chance-corrected statistic as well as on raw unanimity, while denial is judged unanimously.
 
 On the 316-document validation set (stratified by predicted label so that the rare categories are represented), **Fleiss' κ among the three judges = 0.551**, "moderate" on the Landis & Koch (1977) scale and below the pre-registered 0.60. Collapsing the P/Q distinction the LLM author invented moves Cohen's κ by only +0.046, so the line between explicit and borderline phenomenology is *not* the main source of disagreement. The disagreement is about whether a passage is about experience at all.
+
+> ### ⚠️ CORRECTION, 2026-09-14 — THE κ = 0.551 BELONGS TO A PANEL THAT DID NOT LABEL THE CORPUS.
+> **The verdict is unchanged and the withdrawal was owed. The attribution was wrong.**
+>
+> κ = 0.551 was produced by `scripts/07_kappa.py`, whose judge list is hardcoded as
+> `{gpt-4o-mini, llama-3.3-70b, qwen-2.5-72b}` — the **validation trio**. The phi-4
+> substitution (DEV-10) happened *after* validation judging and *before* the corpus run, so
+> **every rate in this paper was produced by `{gpt-4o-mini, llama-3.3-70b, phi-4}`, a panel
+> whose κ this paper never measured.** Confirmed at source: `validation/judged.jsonl` holds
+> 316 records carrying ballots from the qwen trio only — **no phi-4 ballots exist in it**, so
+> the corpus panel's κ cannot be recomputed from that file. It can only be reconstructed.
+>
+> **Reconstructed** (neutral review, 2026-09-14; join `classified/` ↔ `panel_classified/`,
+> rebuild the 316-document enriched design from `06_judge_panel.py:126–152`, 200 draws):
+> corpus panel **median κ = 0.507, range 0.441–0.598**, and **κ = 0.358 over all 63,972
+> three-ballot documents.** All 200 draws fall below 0.60.
+>
+> ⭐ **So every route to the number clears the gate: F4 fires on the reported panel, on the
+> actual panel, and on the full corpus.** Nothing in §5's Withdrawn/Survives split moves.
+> This is recorded rather than silently repaired because the error sits in the paper's single
+> most consequential statistic, **two external referees did not catch it**, and a corrected
+> past is a clean lie.
 
 > **The judges are not unreliable. The question is.** *"Does this text deny that machines are conscious?"* has a stable answer: three independent models agree on it almost every time. *"Is this person reporting inner experience?"* does not, even for human-authored text, even among annotators who agree near-perfectly on the easy cases.
 
@@ -385,7 +407,7 @@ The implication bears directly on the question this study sits upstream of. Mach
 4. **The F (fiction interior) category is contaminated** — it catches book blurbs and plot summaries rather than fiction narrating an interior — and its rate is not quoted as a finding.
 5. **The C4 and OpenWebText vintage** is April 2019 and earlier. D, R and C are unmeasurable there by construction (DEV-06); only the FineWeb-2025 arm speaks to them, and it says zero.
 6. **The cross-time control was initially overstated.** P was first reported as "stable" from the stratum that looked better; weighted, it declines 29%. The correct statement is "roughly stable," and the correction is logged rather than quietly amended.
-7. **The judges share at least one bias** (Q → P, DEV-05), and their κ is measured on an enriched validation sample, which is the honest place to measure it — over all 64,000 documents it would be inflated by the 97% that are N.
+7. **The judges share at least one bias** (Q → P and T → N, DEV-05), and their κ is measured on an enriched validation sample. ⚠️ **Corrected 2026-09-14:** this limitation previously justified the enriched sample by claiming κ over all 64,000 documents *"would be inflated by the 97% that are N."* **That is wrong — Fleiss' κ is chance-corrected and does not inflate under a skewed marginal; raw agreement (96.88%, §4.4) is the statistic that does, and the two were merged.** The whole-population value is *lower*, not higher, and it runs against our interest: **κ ≈ 0.358 over all three-ballot documents.** F4 fires harder over the full corpus than over the enriched set. The enriched sample remains a defensible place to measure; the stated reason was not.
 9. **One panel judge was validated after the fact.** `phi-4` labelled the full corpus on 2026-08-18/19 and sat the control exam on 2026-09-01 (DEV-10). It passed at the validated judges' level, so no number is expected to move; but "every instrument cleared the controls before touching data" was true of the design and not of the execution, and an earlier version of the abstract said otherwise. The keyword prefilter likewise failed its control and was demoted (DEV-01).
 8. **The LLM author read and labelled documents during the study** (DEV-07, DEV-08). Every such judgement lowered the P rate and therefore ran toward that author's hypothesis; each was independently checked by the blind panel before being acted on, and the direction is stated wherever the judgement is reported.
 
@@ -429,7 +451,7 @@ The study design was corrected at two decisive points by the human author, as re
 
 ## Data and code availability
 
-All code, the pre-registration, the deviation log, the control set, sampling seeds, exact stratum counts and weights, every judge label for all 64,000 documents, the validation set with all three judges' votes, the bias probe, the phrase-search output, and every intermediate result file are in the repository. Judge cost: $20.29. Local classification ran on the authors' hardware. Nothing was withdrawn on an unfavourable result; the unfavourable results are in the abstract.
+All code, the pre-registration, the deviation log, the control set, sampling seeds, exact stratum counts and weights, every judge label for all 64,000 documents, and every judge label for all 64,000 documents are in the repository. ⚠️ **Correction, 2026-09-14:** this sentence previously also listed the validation set, the bias probe and the phrase-search output as deposited. **They are not** — `validation/judged.jsonl`, `judge_validation.json`, `agreement.json` and `phrase_search.json` are written to a working path outside the repository and were never committed. They are the *only* load-bearing quantities here that a reader cannot re-derive from the deposit (κ = 0.551, κ = 0.334, the 316-document validation set, the bias probe, the phrase-search hit list). Everything else reproduces from `data/labels/`. Depositing them is tracked and owed. Judge cost: $20.29. Local classification ran on the authors' hardware. Nothing was withdrawn on an unfavourable result; the unfavourable results are in the abstract.
 
 ## References
 
