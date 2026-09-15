@@ -277,9 +277,16 @@ On the 316-document validation set (stratified by predicted label so that the ra
 > κ = 0.551 was produced by `scripts/07_kappa.py`, whose judge list is hardcoded as
 > `{gpt-4o-mini, llama-3.3-70b, qwen-2.5-72b}` — the **validation trio**. The phi-4
 > substitution (DEV-10) happened *after* validation judging and *before* the corpus run, so
-> **every rate in this paper was produced by `{gpt-4o-mini, llama-3.3-70b, phi-4}`, a panel
-> whose κ this paper never measured.** Confirmed at source: `validation/judged.jsonl` holds
-> 316 records carrying ballots from the qwen trio only — **no phi-4 ballots exist in it**, so
+> **every PREVALENCE rate in this paper — the P/Q/F/D/R/C/T figures in Tables A1 and A2, the
+> ones F4 withdrew — was produced by `{gpt-4o-mini, llama-3.3-70b, phi-4}`, a panel whose κ
+> this paper never measured.**
+> ⚠️ *Corrected 2026-09-15, second-standpoint check: an earlier wording of this block said
+> "every rate," which overstates. The §4.6 classifier-precision figures are derived from the
+> single Mistral classifier by construction, not from the panel. A correction that contains
+> an overstatement is not a correction, and this one did until someone else read it.* Confirmed at source, and independently recounted by a second
+> reader: `validation/judged.jsonl` holds 316 records whose `votes` are the qwen trio only —
+> 316 ballots each, plus a single-classifier `mistral_label` field that is not a ballot — and
+> **zero occurrences of phi-4 anywhere in the file**, so
 > the corpus panel's κ cannot be recomputed from that file. It can only be reconstructed.
 >
 > **Reconstructed** (neutral review, 2026-09-14; join `classified/` ↔ `panel_classified/`,
@@ -292,6 +299,12 @@ On the 316-document validation set (stratified by predicted label so that the ra
 > This is recorded rather than silently repaired because the error sits in the paper's single
 > most consequential statistic, **two external referees did not catch it**, and a corrected
 > past is a clean lie.
+>
+> 🔁 **AND THE GIT HISTORY CORROBORATES THE TIMELINE FROM A THIRD DIRECTION** (second-standpoint
+> check, 2026-09-15): the κ commits are `b9dec1c` (2026-08-18 23:29) and `08efa81` (08-19 00:10);
+> the panel swap is `51d99cc` (08-19 03:28), matching DEV-10's 03:30. **κ was computed on the trio
+> that existed three hours before the swap, and the script was never re-run for the new panel.**
+> Three independent routes now agree — the hardcoded list, the ballot file, and the commit clock.
 
 > **The judges are not unreliable. The question is.** *"Does this text deny that machines are conscious?"* has a stable answer: three independent models agree on it almost every time. *"Is this person reporting inner experience?"* does not, even for human-authored text, even among annotators who agree near-perfectly on the easy cases.
 
